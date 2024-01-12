@@ -1,0 +1,20 @@
+# .swiftlint.yml
+
+# Rule to enforce a maximum line length
+#line_length:
+#  warning: 80
+
+# Rule to enforce SwiftLint to ignore certain files
+excluded:
+  - Carthage
+  - Pods
+
+# Rule to enforce trailing commas at the end of arrays
+trailing_comma:
+  arrays: always
+
+disabled_rules:
+  - line_length
+  - trailing_semicolon
+  - identifier_name
+  - force_cast
