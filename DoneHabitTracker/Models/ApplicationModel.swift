@@ -18,7 +18,7 @@ class ApplicationModel: ObservableObject {
     
     // Checking Network Availability
     @Published var isNetworkDown: Bool = false
-    let monitor: NWPathMonitor
+    let monitor = NWPathMonitor()
     let queue = DispatchQueue(label: "NetworkMonitor")
     
     // Signed User
@@ -32,7 +32,13 @@ class ApplicationModel: ObservableObject {
     }
     
     init() {
-        monitor = NWPathMonitor()
+        initializeNetowrkMonitor()
+        
+        self.user = Auth.auth().currentUser
+        setupAuthenticationListener()
+    }
+    
+    private func initializeNetowrkMonitor() {
         monitor.pathUpdateHandler = { [weak self] path in
             guard let self = self else { return }
             
@@ -41,10 +47,6 @@ class ApplicationModel: ObservableObject {
             }
         }
         monitor.start(queue: queue)
-        
-        self.user = Auth.auth().currentUser
-        setupAuthenticationListener()
-        
     }
     
     private func setupAuthenticationListener() {
