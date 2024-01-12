@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyCFfo3h_PJQGYmlCsWYSM7e6eHqdbeVoDo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>116470279699</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>gr.deloitte.doneapp</string>
+	<key>PROJECT_ID</key>
+	<string>habittrackerapp-82e2a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>habittrackerapp-82e2a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:116470279699:ios:2179812feeaf7c89da59e6</string>
+	<key>DATABASE_URL</key>
+	<string>https://habittrackerapp-82e2a-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
