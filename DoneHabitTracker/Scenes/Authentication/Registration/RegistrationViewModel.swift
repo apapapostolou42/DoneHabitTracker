@@ -55,7 +55,7 @@ class RegistrationViewModel: ObservableObject {
     func updateFirestoreUserInfo(user: User) async {
         let db = Firestore.firestore()
         
-        let fsUser = FSUser(activeHabits: [], avatar: "", customHabits: [], email: user.email ?? "", id: user.uid, username: user.email ?? "")
+        let fsUser = FSUser(activeHabits: [], avatar: "", customHabits: [], email: user.email ?? "", id: user.uid, username: profile)
         
         // Convert your FSUser to a dictionary
         do {
@@ -64,15 +64,14 @@ class RegistrationViewModel: ObservableObject {
                 print("Error: Could not convert user to dictionary")
                 return
             }
+
+            let documentRef = db.collection("users").document(user.uid)
             
-            // Add a new document with a generated ID in collection "users"
-            var ref: DocumentReference? = nil
-            ref = db.collection("users").addDocument(data: dictionary) { err in
-                if let err = err {
-                    print("Error adding document: \(err)")
-                } else {
-                    print("Document added with ID: \(ref!.documentID)")
-                }
+            do {
+                try await documentRef.setData(dictionary)
+                print("Document successfully written with ID: \(user.uid)")
+            } catch {
+                print("Error writing document: \(error)")
             }
         } catch {
             print("Error: \(error)")
