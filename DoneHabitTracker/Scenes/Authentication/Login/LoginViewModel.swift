@@ -39,7 +39,6 @@ class LoginViewModel: ObservableObject {
             errorMessage = ""
             appModel.user = result.user
             isLoading.wrappedValue = false
-            appModel.resetToTopView(.mainRoute)
         } catch {
             errorMessage = error.localizedDescription
             isLoading.wrappedValue = false

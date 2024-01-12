@@ -44,8 +44,6 @@ struct DoneHabitTrackerApp: App {
                     }
                     .navigationDestination(for: Route.self) { route in
                         switch route {
-                            case .mainRoute: MainView()
-                            case .loginRoute: LoginView(isLoading: $isLoading)
                             case .signupRoute: RegistrationView(isLoading: $isLoading)
                         }
                     }

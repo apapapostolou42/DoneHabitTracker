@@ -43,7 +43,7 @@ class RegistrationViewModel: ObservableObject {
             appModel.user = result.user
             await updateFirestoreUserInfo(user: result.user)
             isLoading.wrappedValue = false
-            appModel.routes = [.mainRoute]
+            appModel.routes.removeLast()
         }
         catch {
             errorMessage = error.localizedDescription

@@ -9,8 +9,6 @@ import Foundation
 import FirebaseAuth
 
 enum Route: Hashable {
-    case mainRoute
-    case loginRoute
     case signupRoute
 }
 
@@ -36,11 +34,9 @@ class ApplicationModel: ObservableObject {
             if let user = user {
                 // User is signed in
                 self.user = user
-                self.resetToTopView(.mainRoute)
             } else {
                 // No user is signed in
                 self.user = nil
-                self.resetToTopView(.loginRoute)
             }
         }
     }
