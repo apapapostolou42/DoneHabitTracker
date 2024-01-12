@@ -50,6 +50,7 @@
 		D38647692B50D50D0016619C /* ActiveHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38647682B50D50D0016619C /* ActiveHabit.swift */; };
 		D386476B2B50D5830016619C /* CustomHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386476A2B50D5830016619C /* CustomHabit.swift */; };
 		D386476D2B50D6020016619C /* FSUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386476C2B50D6020016619C /* FSUser.swift */; };
+		D386476F2B5153420016619C /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386476E2B5153420016619C /* ProfileViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		D38647682B50D50D0016619C /* ActiveHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveHabit.swift; sourceTree = "<group>"; };
 		D386476A2B50D5830016619C /* CustomHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHabit.swift; sourceTree = "<group>"; };
 		D386476C2B50D6020016619C /* FSUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSUser.swift; sourceTree = "<group>"; };
+		D386476E2B5153420016619C /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				D38647632B50B3FF0016619C /* ProfileView.swift */,
+				D386476E2B5153420016619C /* ProfileViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				D38647182B50154B0016619C /* LoginView.swift in Sources */,
 				D386475F2B50421E0016619C /* ApplicationModel.swift in Sources */,
 				D386471F2B5019FE0016619C /* RegistrationViewModel.swift in Sources */,
+				D386476F2B5153420016619C /* ProfileViewModel.swift in Sources */,
 				D386476D2B50D6020016619C /* FSUser.swift in Sources */,
 				D386475D2B502B4B0016619C /* String+Extensions.swift in Sources */,
 				D386476B2B50D5830016619C /* CustomHabit.swift in Sources */,

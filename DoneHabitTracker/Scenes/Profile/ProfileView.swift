@@ -9,9 +9,18 @@ import SwiftUI
 import FirebaseAuth
 
 struct ProfileView: View {
+    
+    @Binding var isLoading: Bool
+    @StateObject var viewModel: ProfileViewModel
+    
+    init(isLoading: Binding<Bool>) {
+        self._isLoading = isLoading
+        self._viewModel = StateObject(wrappedValue: ProfileViewModel(isLoading: isLoading))
+    }
+    
     var body: some View {
         
-        VStack {
+        VStack(spacing: 16) {
             Text("Profile")
                 .padding(.leading)
                 .font(.largeTitle)
@@ -19,6 +28,10 @@ struct ProfileView: View {
             Text(Auth.auth().currentUser?.uid ?? "No UID")
                 .padding(.leading)
                 .font(.caption)
+            
+            Text("NAME: \(viewModel.user?.username ?? "Undefined")")
+                .padding(.leading)
+            
             
             Button("Logout") {
                 try? Auth.auth().signOut()
@@ -29,5 +42,5 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView()
+    ProfileView(isLoading: .constant(false))
 }

@@ -10,12 +10,13 @@ import FirebaseAuth
 
 struct MainView: View {
     
+    @Binding var isLoading: Bool
     
     var body: some View {
         
         ZStack {
             TabView {
-                ProfileView()
+                ProfileView(isLoading: $isLoading)
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }
@@ -35,5 +36,5 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView()
+    MainView(isLoading: .constant(false))
 }

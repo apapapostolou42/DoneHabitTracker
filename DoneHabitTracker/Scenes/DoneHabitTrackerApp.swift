@@ -36,7 +36,7 @@ struct DoneHabitTrackerApp: App {
                 NavigationStack(path: $appModel.routes) {
                     ZStack {
                         if appModel.user != nil {
-                            MainView()
+                            MainView(isLoading: $isLoading)
                         }
                         else {
                             LoginView(isLoading: $isLoading)
