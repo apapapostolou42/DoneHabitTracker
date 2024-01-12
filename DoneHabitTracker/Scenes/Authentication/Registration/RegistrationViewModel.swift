@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
@@ -15,18 +16,49 @@ class RegistrationViewModel: ObservableObject {
     
     @Published var email: String = ""
     @Published var password: String = ""
+    @Published var repeatPassword: String = ""
     @Published var profile: String = ""
     @Published var errorMessage: String = ""
+    
+    @Published var passwordsMatch: Bool = false
+    @Published var isEmailValid: Bool = false
     
     var appModel: ApplicationModel?
     var isLoading: Binding<Bool>
     
     var isFormValid: Bool {
-        !email.isEmptyOrWhiteSpace && !password.isEmptyOrWhiteSpace && !profile.isEmptyOrWhiteSpace
+        !email.isEmptyOrWhiteSpace && isEmailValid &&
+        !password.isEmptyOrWhiteSpace &&
+        password.count >= 6 &&
+        passwordsMatch &&
+        !profile.isEmptyOrWhiteSpace
     }
     
     init(isLoading: Binding<Bool>) {
         self.isLoading = isLoading
+        
+        Publishers.CombineLatest(
+            $password.debounce(for: 0.1, scheduler: RunLoop.main),
+            $repeatPassword.debounce(for: 0.1, scheduler: RunLoop.main)
+        )
+        .map { password, repeatPassword in
+            return password == repeatPassword && !password.isEmpty && password.count >= 6
+        }
+        .assign(to: &$passwordsMatch)
+        
+        $email
+            .receive(on: RunLoop.main)
+            .debounce(for: 0.1, scheduler: RunLoop.main)
+            .map { [weak self] email in
+                return self?.validateEmail(email) ?? false
+            }
+            .assign(to: &$isEmailValid)
+    }
+    
+    private func validateEmail(_ email: String) -> Bool {
+        let emailPattern = "[A-Z0-9a-z._%+-]+@[A-Z0-9a-z.-]+\\.[A-Za-z]{2,}"
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailPattern)
+        return emailPredicate.evaluate(with: email)
     }
     
     func setAppModel(_ appModel: ApplicationModel) {

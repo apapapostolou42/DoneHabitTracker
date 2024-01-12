@@ -30,10 +30,16 @@ struct RegistrationView: View {
                 TextField("Email", text: $viewModel.email)
                     .textInputAutocapitalization(.never) // Disables auto-capitalization
                     .disableAutocorrection(true)         // Disables auto-correction
+                    .foregroundColor(viewModel.isEmailValid ? .primary : .red)
                 
                 SecureField("Password", text: $viewModel.password)
                     .textInputAutocapitalization(.never) // Disables auto-capitalization
                     .disableAutocorrection(true)         // Disables auto-correction
+                
+                SecureField("Repeat Password", text: $viewModel.repeatPassword)
+                    .textInputAutocapitalization(.never) // Disables auto-capitalization
+                    .disableAutocorrection(true)         // Disables auto-correction
+                    .foregroundColor(viewModel.passwordsMatch ? .primary : .red)
                 
                 TextField("Profile Name", text: $viewModel.profile)
                     .textInputAutocapitalization(.never) // Disables auto-capitalization
