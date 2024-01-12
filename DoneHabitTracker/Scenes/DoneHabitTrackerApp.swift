@@ -55,6 +55,15 @@ struct DoneHabitTrackerApp: App {
                 .overlay {
                     isLoading ? ProgressView().scaleEffect(1.5) : nil
                 }
+                .alert(isPresented: $appModel.isNetworkDown) {
+                    Alert(
+                        title: Text("Network Error"),
+                        message: Text("Lost Internet Connection, try again later"),
+                        dismissButton: .default(Text("OK")) {
+                            exit(0)
+                        }
+                    )
+                }
             } else {
                 SplashView(showSplash: $showSplash)
             }

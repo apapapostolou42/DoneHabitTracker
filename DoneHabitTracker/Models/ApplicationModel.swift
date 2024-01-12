@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseAuth
+import Network
 
 enum Route: Hashable {
     case signupRoute
@@ -15,7 +16,15 @@ enum Route: Hashable {
 @MainActor
 class ApplicationModel: ObservableObject {
     
+    // Checking Network Availability
+    @Published var isNetworkDown: Bool = false
+    let monitor: NWPathMonitor
+    let queue = DispatchQueue(label: "NetworkMonitor")
+    
+    // Signed User
     @Published var user: User? = nil
+    
+    // Navigation
     @Published var routes: [Route] = []
  
     func resetToTopView(_ route: Route) {
@@ -23,8 +32,19 @@ class ApplicationModel: ObservableObject {
     }
     
     init() {
+        monitor = NWPathMonitor()
+        monitor.pathUpdateHandler = { [weak self] path in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                self.isNetworkDown = path.status != .satisfied
+            }
+        }
+        monitor.start(queue: queue)
+        
         self.user = Auth.auth().currentUser
         setupAuthenticationListener()
+        
     }
     
     private func setupAuthenticationListener() {
