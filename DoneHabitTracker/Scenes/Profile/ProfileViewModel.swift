@@ -23,7 +23,9 @@ class ProfileViewModel : ObservableObject {
     func loadUserData() {
         if let uid = Auth.auth().currentUser?.uid {
             Task {
+                isLoading.wrappedValue = true
                 self.user = await fetchFirestoreUserInfo(userID: uid)
+                isLoading.wrappedValue = false
             }
         }
     }

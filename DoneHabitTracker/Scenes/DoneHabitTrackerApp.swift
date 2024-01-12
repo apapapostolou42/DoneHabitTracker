@@ -32,40 +32,48 @@ struct DoneHabitTrackerApp: App {
     var body: some Scene {
         WindowGroup {
             
-            if !showSplash {
-                NavigationStack(path: $appModel.routes) {
-                    ZStack {
-                        if appModel.user != nil {
-                            MainView(isLoading: $isLoading)
+            Group {
+                if !showSplash {
+                    NavigationStack(path: $appModel.routes) {
+                        ZStack {
+                            if appModel.user != nil {
+                                MainView(isLoading: $isLoading)
+                            }
+                            else {
+                                LoginView(isLoading: $isLoading)
+                            }
                         }
-                        else {
-                            LoginView(isLoading: $isLoading)
+                        .navigationDestination(for: Route.self) { route in
+                            switch route {
+                                case .signupRoute: RegistrationView(isLoading: $isLoading)
+                            }
                         }
                     }
-                    .navigationDestination(for: Route.self) { route in
-                        switch route {
-                            case .signupRoute: RegistrationView(isLoading: $isLoading)
-                        }
+                    
+                } else {
+                    SplashView(showSplash: $showSplash)
+                }
+            }
+            .environmentObject(appModel)
+            .environment(\.colorScheme, .light)
+            .overlay {
+                isLoading ? Color.black.opacity(0.6).ignoresSafeArea() : nil
+            }
+            .overlay {
+                isLoading ? 
+                    ProgressView().scaleEffect(2.0)
+                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                : nil
+                
+            }
+            .alert(isPresented: $appModel.isNetworkDown) {
+                Alert(
+                    title: Text("Network Error"),
+                    message: Text("Lost Internet Connection, try again later"),
+                    dismissButton: .default(Text("OK")) {
+                        exit(0)
                     }
-                }
-                .environmentObject(appModel)
-                .overlay {
-                    isLoading ? Color.black.opacity(0.7).ignoresSafeArea() : nil
-                }
-                .overlay {
-                    isLoading ? ProgressView().scaleEffect(1.5) : nil
-                }
-                .alert(isPresented: $appModel.isNetworkDown) {
-                    Alert(
-                        title: Text("Network Error"),
-                        message: Text("Lost Internet Connection, try again later"),
-                        dismissButton: .default(Text("OK")) {
-                            exit(0)
-                        }
-                    )
-                }
-            } else {
-                SplashView(showSplash: $showSplash)
+                )
             }
         }
     }

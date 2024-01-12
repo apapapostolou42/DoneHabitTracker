@@ -15,9 +15,10 @@ struct SplashView: View {
     var body: some View {
         VStack {
             Image("logo")
-            Text("Done App Splash")
-                .font(.largeTitle)
-                .bold()
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 32)
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
