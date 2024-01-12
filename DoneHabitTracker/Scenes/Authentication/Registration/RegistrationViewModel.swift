@@ -50,15 +50,9 @@ class RegistrationViewModel: ObservableObject {
             .receive(on: RunLoop.main)
             .debounce(for: 0.1, scheduler: RunLoop.main)
             .map { [weak self] email in
-                return self?.validateEmail(email) ?? false
+                return self?.email.isValidEmailAddress ?? false
             }
             .assign(to: &$isEmailValid)
-    }
-    
-    private func validateEmail(_ email: String) -> Bool {
-        let emailPattern = "[A-Z0-9a-z._%+-]+@[A-Z0-9a-z.-]+\\.[A-Za-z]{2,}"
-        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailPattern)
-        return emailPredicate.evaluate(with: email)
     }
     
     func setAppModel(_ appModel: ApplicationModel) {

@@ -14,4 +14,10 @@ extension String {
         self.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
     
+    var isValidEmailAddress: Bool {
+        let emailPattern = "[A-Z0-9a-z._%+-]+@[A-Z0-9a-z.-]+\\.[A-Za-z]{2,}"
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailPattern)
+        return emailPredicate.evaluate(with: self)
+    }
+    
 }
