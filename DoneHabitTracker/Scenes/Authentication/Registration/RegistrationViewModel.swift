@@ -64,7 +64,7 @@ class RegistrationViewModel: ObservableObject {
         
         do {
             isLoading.wrappedValue = true
-            let result = try await Auth.auth().createUser(withEmail: email, password: password)
+            let result = try await Auth.auth().createUser(withEmail: email.trim(), password: password.trim())
             errorMessage = ""
             appModel.user = result.user
             await updateFirestoreUserInfo(user: result.user)
@@ -81,7 +81,7 @@ class RegistrationViewModel: ObservableObject {
     func updateFirestoreUserInfo(user: User) async {
         let db = Firestore.firestore()
         
-        let fsUser = FSUser(activeHabits: [], avatar: "", customHabits: [], email: user.email ?? "", id: user.uid, username: profile)
+        let fsUser = FSUser(activeHabits: [], avatar: "", customHabits: [], email: user.email ?? "", id: user.uid, username: profile.trim())
         
         // Convert your FSUser to a dictionary
         do {
