@@ -21,9 +21,31 @@ struct ProfileView: View {
     var body: some View {
         
         VStack(spacing: 16) {
-            Text("Profile")
-                .padding(.leading)
-                .font(.largeTitle)
+            
+            HStack {
+                Text("Profile")
+                    .padding(.leading)
+                    .font(.largeTitle)
+                
+                Spacer()
+                
+                CircularProgressBar(percentage: 79)
+                    .frame(width: 100, height: 100)
+            }
+            
+            Spacer()
+            
+            ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: 0)
+            
+            ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: 10)
+            
+            ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: 32)
+            
+            ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: 40)
+                        
+            
+            Spacer()
+            
             
             Text(Auth.auth().currentUser?.uid ?? "No UID")
                 .padding(.leading)
@@ -38,6 +60,7 @@ struct ProfileView: View {
                 
             }
         }
+        .padding(32)
     }
 }
 
