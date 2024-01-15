@@ -55,7 +55,7 @@ struct DoneHabitTrackerApp: App {
                 }
             }
             .environmentObject(appModel)
-            .environment(\.colorScheme, .light)
+            .environment(\.colorScheme, .dark)
             .overlay {
                 isLoading ? Color.black.opacity(0.6).ignoresSafeArea() : nil
             }

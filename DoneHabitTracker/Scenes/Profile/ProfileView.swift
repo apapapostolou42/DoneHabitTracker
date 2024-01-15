@@ -13,6 +13,8 @@ struct ProfileView: View {
     @Binding var isLoading: Bool
     @StateObject var viewModel: ProfileViewModel
     
+    @State var currentGlasses: Int = 0
+    
     init(isLoading: Binding<Bool>) {
         self._isLoading = isLoading
         self._viewModel = StateObject(wrappedValue: ProfileViewModel(isLoading: isLoading))
@@ -35,7 +37,10 @@ struct ProfileView: View {
             
             Spacer()
             
-            ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: 0)
+            HStack(spacing: 8) {
+                ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: currentGlasses)
+                StepperView(value: $currentGlasses)
+            }
             
             ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: 10)
             
