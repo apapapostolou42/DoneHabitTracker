@@ -37,6 +37,10 @@ struct ProfileView: View {
             
             Spacer()
             
+            ChartsBar(dayData: viewModel.dayData, weekData:  viewModel.weekData)
+            
+            Spacer()
+            
             HStack(spacing: 8) {
                 ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: currentGlasses)
                 StepperView(value: $currentGlasses)

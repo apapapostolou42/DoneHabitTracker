@@ -15,6 +15,16 @@ class ProfileViewModel : ObservableObject {
     var isLoading: Binding<Bool>
     @Published var user: FSUser?
     
+    @Published var dayData: [ChartsBar.Item] = [
+        .init(habitName: "Ποτήρια Νερό", value: 23),
+        .init(habitName: "Λεπτά Περπάτημα", value: 35),
+    ]
+    
+    @Published var weekData: [ChartsBar.Item] = [
+        .init(habitName: "Ποτήρια Νερό", value: 33),
+        .init(habitName: "Λεπτά Περπάτημα", value: 12),
+    ]
+    
     init(isLoading: Binding<Bool>) {
         self.isLoading = isLoading
         loadUserData()
