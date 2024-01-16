@@ -17,7 +17,7 @@ struct StatisticsView: View {
     }
     
     var body: some View {
-        Text("New Habit Tab")
+        Text("Statistics Tab")
     }
 }
 
