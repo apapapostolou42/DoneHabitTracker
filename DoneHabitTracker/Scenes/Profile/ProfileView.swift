@@ -24,63 +24,66 @@ struct ProfileView: View {
     
     var body: some View {
         
-        VStack(spacing: 16) {
+        ScrollView(showsIndicators: false) {
             
-            HStack {
-                Text("Profile")
-                    .padding(.leading)
-                    .font(.largeTitle)
+            VStack(spacing: 16) {
+                
+                HStack {
+                    // First way to use doughnut throuth Swift Charts
+                    ChartsDougnutProgress(percentage: 32)
+                    
+                    Spacer()
+                    
+                    // Second way to use doughnut through custom Control
+                    CircularProgressBar(percentage: 79)
+                        .frame(width: 120, height: 120)
+                }
                 
                 Spacer()
                 
-                CircularProgressBar(percentage: 79)
-                    .frame(width: 100, height: 100)
-            }
-            
-            Spacer()
-            
-            PillTagsView(
-                pillTags: [
-                    PillTag(text: "All"),
-                    PillTag(text: "Fitness"),
-                    PillTag(text: "Daily"),
-                    PillTag(text: "Custom"),
-                    PillTag(text: "Item 1"),
-                    PillTag(text: "Item 2")
-                ],
-                selectedTag: $selectedPill
-            )
-            
-            ChartsBar(dayData: viewModel.dayData, weekData:  viewModel.weekData)
-            
-            Spacer()
-            
-            HStack(spacing: 8) {
-                ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: currentGlasses)
-                StepperView(value: $currentGlasses)
-            }
-            
-            ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: 10)
-            
-            ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: 32)
-            
-            ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: 40)
-                        
-            
-            Spacer()
-            
-            
-            Text(Auth.auth().currentUser?.uid ?? "No UID")
-                .padding(.leading)
-                .font(.caption)
-            
-            Text("NAME: \(viewModel.user?.username ?? "Undefined")")
-                .padding(.leading)
-            
-            
-            Button("Logout") {
-                try? Auth.auth().signOut()
+                PillTagsView(
+                    pillTags: [
+                        PillTag(text: "All"),
+                        PillTag(text: "Fitness"),
+                        PillTag(text: "Daily"),
+                        PillTag(text: "Custom"),
+                        PillTag(text: "Item 1"),
+                        PillTag(text: "Item 2")
+                    ],
+                    selectedTag: $selectedPill
+                )
                 
+                ChartsBar(dayData: viewModel.dayData, weekData:  viewModel.weekData)
+                
+                Spacer()
+                
+                HStack(spacing: 8) {
+                    ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: currentGlasses)
+                    StepperView(value: $currentGlasses)
+                }
+                
+                ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: 10)
+                
+                ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: 32)
+                
+                ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: 40)
+                
+                
+                Spacer()
+                
+                
+                Text(Auth.auth().currentUser?.uid ?? "No UID")
+                    .padding(.leading)
+                    .font(.caption)
+                
+                Text("NAME: \(viewModel.user?.username ?? "Undefined")")
+                    .padding(.leading)
+                
+                
+                Button("Logout") {
+                    try? Auth.auth().signOut()
+                    
+                }
             }
         }
         .padding(32)

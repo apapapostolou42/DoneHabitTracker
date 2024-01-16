@@ -51,12 +51,13 @@ struct CircularProgressBar: View {
                 .font(.title)
                 .foregroundColor(Color.primary)
         }
+        .padding(10)
     }
 }
 
 #Preview {
     
     CircularProgressBar(percentage: 79)
-        .frame(width: 100, height: 100)
+        .frame(width: 120, height: 120)
     
 }
