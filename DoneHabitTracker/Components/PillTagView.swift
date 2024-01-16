@@ -20,6 +20,8 @@ struct PillTagsView: View {
     @Binding var selectedTag: PillTag?
     @State private var totalHeight = CGFloat.infinity  // Arbitrary initial value
     
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         VStack {
             GeometryReader { geometry in
@@ -65,8 +67,8 @@ struct PillTagsView: View {
         Text(pillTag.text)
             .padding(.horizontal)
             .padding(.vertical, 8)
-            .background(selectedTag == pillTag ? Color.blue : Color.gray.opacity(0.2))
-            .foregroundColor(selectedTag == pillTag ? .white : .black)
+            .background(selectedTag == pillTag ? Color.blue : Color.gray.opacity(colorScheme == .dark ? 0.4 : 0.2))
+            .foregroundColor(selectedTag == pillTag ? .white : .primary)
             .clipShape(Capsule())
             .onTapGesture {
                 self.selectedTag = pillTag
