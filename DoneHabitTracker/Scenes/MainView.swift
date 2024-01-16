@@ -18,12 +18,12 @@ struct MainView: View {
         ZStack {
             TabView(selection: $selectedTab) {
                 
-                Text("Home Tab")
+                HomeView(isLoading: $isLoading)
                     .tabItem {
                         Image("ti_home")
                             .renderingMode(.template)
                             .foregroundColor(selectedTab == 0 ? .blue : .gray)
-                        Text("Home")
+                        Text("ti_home".localized)
                     }
                     .tag(0)
                 
@@ -32,7 +32,7 @@ struct MainView: View {
                         Image("ti_star")
                             .renderingMode(.template)
                             .foregroundColor(selectedTab == 0 ? .blue : .gray)
-                        Text("Habits")
+                        Text("ti_habits")
                     }
                     .tag(1)
                 
@@ -41,7 +41,7 @@ struct MainView: View {
                         Image("ti_plus")
                             .renderingMode(.template)
                             .foregroundColor(selectedTab == 0 ? .blue : .gray)
-                        Text("New")
+                        Text("ti_new")
                     }
                     .tag(2)
                 
@@ -50,7 +50,7 @@ struct MainView: View {
                         Image("ti_statistics")
                             .renderingMode(.template)
                             .foregroundColor(selectedTab == 0 ? .blue : .gray)
-                        Text("Statistics")
+                        Text("ti_statistics")
                     }
                     .tag(3)
                 
@@ -59,7 +59,7 @@ struct MainView: View {
                         Image("ti_profile")
                             .renderingMode(.template)
                             .foregroundColor(selectedTab == 0 ? .blue : .gray)
-                        Text("Profile")
+                        Text("ti_profile")
                     }
                     .tag(4)
             }

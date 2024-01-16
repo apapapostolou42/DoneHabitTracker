@@ -22,71 +22,143 @@ struct ProfileView: View {
         self._viewModel = StateObject(wrappedValue: ProfileViewModel(isLoading: isLoading))
     }
     
-    var body: some View {
-        
-        ScrollView(showsIndicators: false) {
-            
-            VStack(spacing: 16) {
+    struct ProfileHeader: View {
+        struct ProfilePicPlaceholder: View {
+            var body: some View {
                 
-                HStack {
-                    // First way to use doughnut throuth Swift Charts
-                    ChartsDougnutProgress(percentage: 32)
-                    
-                    Spacer()
-                    
-                    // Second way to use doughnut through custom Control
-                    CircularProgressBar(percentage: 79)
-                        .frame(width: 120, height: 120)
-                }
-                
-                Spacer()
-                
-                PillTagsView(
-                    pillTags: [
-                        PillTag(text: "All"),
-                        PillTag(text: "Fitness"),
-                        PillTag(text: "Daily"),
-                        PillTag(text: "Custom"),
-                        PillTag(text: "Item 1"),
-                        PillTag(text: "Item 2")
-                    ],
-                    selectedTag: $selectedPill
-                )
-                
-                ChartsBar(dayData: viewModel.dayData, weekData:  viewModel.weekData)
-                
-                Spacer()
-                
-                HStack(spacing: 8) {
-                    ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: currentGlasses)
-                    StepperView(value: $currentGlasses)
-                }
-                
-                ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: 10)
-                
-                ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: 32)
-                
-                ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: 40)
-                
-                
-                Spacer()
-                
-                
-                Text(Auth.auth().currentUser?.uid ?? "No UID")
-                    .padding(.leading)
-                    .font(.caption)
-                
-                Text("NAME: \(viewModel.user?.username ?? "Undefined")")
-                    .padding(.leading)
-                
-                
-                Button("Logout") {
-                    try? Auth.auth().signOut()
-                    
+                Button(action: { }) {
+                    ZStack {
+                        Circle()
+                            .stroke(lineWidth: 3.0)
+                            .background(Color.clear)
+                            .foregroundColor(.primary)
+                            .frame(width: 58, height: 58)
+                        
+                        
+                        Image("ti_profile")
+                            .resizable()
+                            .renderingMode(.template)
+                            .foregroundColor(.primary)
+                            .frame(width: 44, height: 44)
+                            
+                        
+                        Image("ti_plus")
+                            .renderingMode(.template)
+                            .foregroundColor(.primary)
+                            .offset(CGSize(width: 30.0, height: 22.0))
+                            .scaleEffect(1.2)
+                    }
+                    .tint(.primary)
                 }
             }
         }
-        .padding(32)
+        
+        var body: some View {
+            HStack(alignment: .center, spacing: 32) {
+                Text("profile_profile")
+                    .font(.system(size: 58).bold())
+                    .underline()
+                
+                ProfilePicPlaceholder()
+                
+                Spacer()
+            }
+        }
+    }
+    
+    struct ProfileFields: View {
+        var body: some View {
+            VStack(spacing: 32) {
+                HStack(spacing: 0) {
+                    Text("profile_form_name")
+                        .frame(width: 100, alignment: .leading)
+                    
+                    AppTextField(hint: "profile_form_name_hint", text: .constant(""))
+
+                }
+                HStack(spacing: 0) {
+                    Text("profile_form_email".localized)
+                        .frame(width: 100, alignment: .leading)
+                    AppTextField(hint: "profile_form_email_hint", text: .constant(""))
+                }
+                HStack(alignment: .top, spacing: 0) {
+                    Text("profile_form_password")
+                        .frame(width: 100, alignment: .leading)
+                    VStack(spacing: 16) {
+                        AppTextField(hint: "profile_form_password_new", text: .constant(""))
+                        
+                        AppTextField(hint: "profile_form_password_repeat", text: .constant(""))
+                    }
+                }
+                
+                HStack(spacing: 64) {
+                    Button(action: {
+                        
+                    }) {
+                        Text("profile_btn_update")
+                            .padding(8)
+                            .foregroundColor(.white)
+                            .background(Color.blue)
+                            .cornerRadius(5)
+                    }
+                    .disabled(false)
+                    
+                    Button(action: {
+                        try? Auth.auth().signOut()
+                    }) {
+                        Text("profile_btn_logout")
+                            .padding(8)
+                            .foregroundColor(.white)
+                            .background(Color.blue)
+                            .cornerRadius(5)
+                    }
+                    .disabled(false)
+                }
+            }
+        }
+    }
+    
+    struct ProfileSettings: View {
+        var body: some View {
+            VStack(alignment: .leading) {
+                Text("profile_settings")
+                    .font(.system(size: 58).bold())
+                    .underline()
+                
+                HStack(spacing: 0) {
+                    Text("profile_settings_mode")
+                        .frame(width: 100, alignment: .leading)
+                    
+                    AppDropDown(selectedItem: .constant("System Default"), options: ["System Default", "Light", "Dark"]) { selection in
+                        
+                    }
+                }
+                
+                HStack(spacing: 0) {
+                    Text("profile_settings_language")
+                        .frame(width: 100, alignment: .leading)
+                    
+                    AppDropDown(selectedItem: .constant("English"), options: ["English", "Ελληνικά (Greek)"]) { selection in
+                        
+                    }
+                }
+            }
+        }
+    }
+    
+    var body: some View {
+        ScrollView(showsIndicators: false) {
+            VStack(alignment: .leading, spacing: 48) {
+                ProfileHeader()
+                
+                ProfileFields()
+                
+                ProfileSettings()
+                
+                
+            }
+        }
+        .padding(16)
     }
 }
 

@@ -59,6 +59,11 @@
 		D386477C2B5671C40016619C /* ChartsPie.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386477B2B5671C40016619C /* ChartsPie.swift */; };
 		D386477E2B567BB80016619C /* PillTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386477D2B567BB80016619C /* PillTagView.swift */; };
 		D38647802B568BFF0016619C /* ChartsDougnutProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386477F2B568BFF0016619C /* ChartsDougnutProgress.swift */; };
+		D38647842B56B6610016619C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D38647832B56B6610016619C /* Localizable.xcstrings */; };
+		D38647862B56C4AE0016619C /* AppTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38647852B56C4AE0016619C /* AppTextField.swift */; };
+		D38647882B56D45F0016619C /* AppDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38647872B56D45F0016619C /* AppDropDown.swift */; };
+		D386478B2B56E2580016619C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386478A2B56E2580016619C /* HomeView.swift */; };
+		D386478D2B56E2650016619C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386478C2B56E2650016619C /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +93,11 @@
 		D386477B2B5671C40016619C /* ChartsPie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsPie.swift; sourceTree = "<group>"; };
 		D386477D2B567BB80016619C /* PillTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillTagView.swift; sourceTree = "<group>"; };
 		D386477F2B568BFF0016619C /* ChartsDougnutProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsDougnutProgress.swift; sourceTree = "<group>"; };
+		D38647832B56B6610016619C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		D38647852B56C4AE0016619C /* AppTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
+		D38647872B56D45F0016619C /* AppDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDropDown.swift; sourceTree = "<group>"; };
+		D386478A2B56E2580016619C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D386478C2B56E2650016619C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +164,7 @@
 				D33F20D62B2875B800C2353E /* Assets.xcassets */,
 				D38647222B5027640016619C /* GoogleService-Info.plist */,
 				D33F20D82B2875B800C2353E /* Preview Content */,
+				D38647832B56B6610016619C /* Localizable.xcstrings */,
 			);
 			path = DoneHabitTracker;
 			sourceTree = "<group>";
@@ -169,6 +180,7 @@
 		D38647142B5013660016619C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				D38647892B56E2480016619C /* Home */,
 				D38647212B501A410016619C /* Profile */,
 				D38647202B501A280016619C /* Splash */,
 				D38647192B5019990016619C /* Authentication */,
@@ -260,8 +272,19 @@
 				D386477B2B5671C40016619C /* ChartsPie.swift */,
 				D386477D2B567BB80016619C /* PillTagView.swift */,
 				D386477F2B568BFF0016619C /* ChartsDougnutProgress.swift */,
+				D38647852B56C4AE0016619C /* AppTextField.swift */,
+				D38647872B56D45F0016619C /* AppDropDown.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		D38647892B56E2480016619C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D386478A2B56E2580016619C /* HomeView.swift */,
+				D386478C2B56E2650016619C /* HomeViewModel.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,6 +358,7 @@
 			knownRegions = (
 				en,
 				Base,
+				el,
 			);
 			mainGroup = D33F20C62B2875B600C2353E;
 			packageReferences = (
@@ -356,6 +380,7 @@
 			files = (
 				D33F20DA2B2875B800C2353E /* Preview Assets.xcassets in Resources */,
 				D33F20D72B2875B800C2353E /* Assets.xcassets in Resources */,
+				D38647842B56B6610016619C /* Localizable.xcstrings in Resources */,
 				D38647232B5027640016619C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,6 +395,7 @@
 				D38647762B55300E0016619C /* CircularProgressBar.swift in Sources */,
 				D33F20D52B2875B600C2353E /* MainView.swift in Sources */,
 				D33F20D32B2875B600C2353E /* DoneHabitTrackerApp.swift in Sources */,
+				D386478B2B56E2580016619C /* HomeView.swift in Sources */,
 				D386477A2B5590810016619C /* ChartsBar.swift in Sources */,
 				D38647642B50B3FF0016619C /* ProfileView.swift in Sources */,
 				D386477E2B567BB80016619C /* PillTagView.swift in Sources */,
@@ -385,10 +411,13 @@
 				D386475D2B502B4B0016619C /* String+Extensions.swift in Sources */,
 				D386476B2B50D5830016619C /* CustomHabit.swift in Sources */,
 				D386471D2B5019E80016619C /* RegistrationView.swift in Sources */,
+				D38647882B56D45F0016619C /* AppDropDown.swift in Sources */,
 				D38647692B50D50D0016619C /* ActiveHabit.swift in Sources */,
+				D386478D2B56E2650016619C /* HomeViewModel.swift in Sources */,
 				D386471B2B5019D00016619C /* LoginViewModel.swift in Sources */,
 				D38647162B5013C50016619C /* SplashView.swift in Sources */,
 				D38647802B568BFF0016619C /* ChartsDougnutProgress.swift in Sources */,
+				D38647862B56C4AE0016619C /* AppTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
