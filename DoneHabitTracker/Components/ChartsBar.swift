@@ -31,6 +31,9 @@ struct ChartsBar: View {
     
     
     var body: some View {
+        
+        // Source: https://www.devtechie.com/community/public/posts/154178-new-in-swiftui-4-multi-series-bar-chart
+        
         Chart {
             ForEach(habitStatData, id: \.groupName) { element in
                 ForEach(element.data) {
