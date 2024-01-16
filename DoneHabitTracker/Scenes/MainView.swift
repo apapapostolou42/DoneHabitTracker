@@ -27,7 +27,7 @@ struct MainView: View {
                     }
                     .tag(0)
                 
-                Text("Habits Tab")
+                HabitsView(isLoading: $isLoading)
                     .tabItem {
                         Image("ti_star")
                             .renderingMode(.template)
@@ -36,7 +36,7 @@ struct MainView: View {
                     }
                     .tag(1)
                 
-                Text("New Tab")
+                NewHabitView(isLoading: $isLoading)
                     .tabItem {
                         Image("ti_plus")
                             .renderingMode(.template)
@@ -45,7 +45,7 @@ struct MainView: View {
                     }
                     .tag(2)
                 
-                Text("Statistics Tab")
+                StatisticsView(isLoading: $isLoading)
                     .tabItem {
                         Image("ti_statistics")
                             .renderingMode(.template)

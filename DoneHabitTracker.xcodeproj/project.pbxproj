@@ -64,6 +64,12 @@
 		D38647882B56D45F0016619C /* AppDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38647872B56D45F0016619C /* AppDropDown.swift */; };
 		D386478B2B56E2580016619C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386478A2B56E2580016619C /* HomeView.swift */; };
 		D386478D2B56E2650016619C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386478C2B56E2650016619C /* HomeViewModel.swift */; };
+		D38647912B56F5D00016619C /* HabitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38647902B56F5D00016619C /* HabitsView.swift */; };
+		D38647932B56F5E10016619C /* HabitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38647922B56F5E10016619C /* HabitsViewModel.swift */; };
+		D38647962B56F6F70016619C /* NewHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38647952B56F6F70016619C /* NewHabitView.swift */; };
+		D38647982B56F7040016619C /* NewHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38647972B56F7040016619C /* NewHabitViewModel.swift */; };
+		D386479B2B56F8310016619C /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386479A2B56F8310016619C /* StatisticsView.swift */; };
+		D386479D2B56F83F0016619C /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386479C2B56F83F0016619C /* StatisticsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +104,12 @@
 		D38647872B56D45F0016619C /* AppDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDropDown.swift; sourceTree = "<group>"; };
 		D386478A2B56E2580016619C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		D386478C2B56E2650016619C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		D38647902B56F5D00016619C /* HabitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsView.swift; sourceTree = "<group>"; };
+		D38647922B56F5E10016619C /* HabitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewModel.swift; sourceTree = "<group>"; };
+		D38647952B56F6F70016619C /* NewHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHabitView.swift; sourceTree = "<group>"; };
+		D38647972B56F7040016619C /* NewHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHabitViewModel.swift; sourceTree = "<group>"; };
+		D386479A2B56F8310016619C /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
+		D386479C2B56F83F0016619C /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,10 +192,13 @@
 		D38647142B5013660016619C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				D38647892B56E2480016619C /* Home */,
-				D38647212B501A410016619C /* Profile */,
 				D38647202B501A280016619C /* Splash */,
 				D38647192B5019990016619C /* Authentication */,
+				D38647892B56E2480016619C /* Home */,
+				D386478E2B56F57E0016619C /* Habits */,
+				D38647942B56F6CF0016619C /* NewHabit */,
+				D38647992B56F81B0016619C /* Statistics */,
+				D38647212B501A410016619C /* Profile */,
 				D33F20D42B2875B600C2353E /* MainView.swift */,
 				D33F20D22B2875B600C2353E /* DoneHabitTrackerApp.swift */,
 			);
@@ -285,6 +300,33 @@
 				D386478C2B56E2650016619C /* HomeViewModel.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		D386478E2B56F57E0016619C /* Habits */ = {
+			isa = PBXGroup;
+			children = (
+				D38647902B56F5D00016619C /* HabitsView.swift */,
+				D38647922B56F5E10016619C /* HabitsViewModel.swift */,
+			);
+			path = Habits;
+			sourceTree = "<group>";
+		};
+		D38647942B56F6CF0016619C /* NewHabit */ = {
+			isa = PBXGroup;
+			children = (
+				D38647952B56F6F70016619C /* NewHabitView.swift */,
+				D38647972B56F7040016619C /* NewHabitViewModel.swift */,
+			);
+			path = NewHabit;
+			sourceTree = "<group>";
+		};
+		D38647992B56F81B0016619C /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				D386479A2B56F8310016619C /* StatisticsView.swift */,
+				D386479C2B56F83F0016619C /* StatisticsViewModel.swift */,
+			);
+			path = Statistics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,11 +437,15 @@
 				D38647762B55300E0016619C /* CircularProgressBar.swift in Sources */,
 				D33F20D52B2875B600C2353E /* MainView.swift in Sources */,
 				D33F20D32B2875B600C2353E /* DoneHabitTrackerApp.swift in Sources */,
+				D38647962B56F6F70016619C /* NewHabitView.swift in Sources */,
+				D38647982B56F7040016619C /* NewHabitViewModel.swift in Sources */,
 				D386478B2B56E2580016619C /* HomeView.swift in Sources */,
 				D386477A2B5590810016619C /* ChartsBar.swift in Sources */,
+				D386479B2B56F8310016619C /* StatisticsView.swift in Sources */,
 				D38647642B50B3FF0016619C /* ProfileView.swift in Sources */,
 				D386477E2B567BB80016619C /* PillTagView.swift in Sources */,
 				D386477C2B5671C40016619C /* ChartsPie.swift in Sources */,
+				D386479D2B56F83F0016619C /* StatisticsViewModel.swift in Sources */,
 				D38647782B5541010016619C /* StepperView.swift in Sources */,
 				D38647182B50154B0016619C /* LoginView.swift in Sources */,
 				D386475F2B50421E0016619C /* ApplicationModel.swift in Sources */,
@@ -408,8 +454,10 @@
 				D386471F2B5019FE0016619C /* RegistrationViewModel.swift in Sources */,
 				D386476F2B5153420016619C /* ProfileViewModel.swift in Sources */,
 				D386476D2B50D6020016619C /* FSUser.swift in Sources */,
+				D38647912B56F5D00016619C /* HabitsView.swift in Sources */,
 				D386475D2B502B4B0016619C /* String+Extensions.swift in Sources */,
 				D386476B2B50D5830016619C /* CustomHabit.swift in Sources */,
+				D38647932B56F5E10016619C /* HabitsViewModel.swift in Sources */,
 				D386471D2B5019E80016619C /* RegistrationView.swift in Sources */,
 				D38647882B56D45F0016619C /* AppDropDown.swift in Sources */,
 				D38647692B50D50D0016619C /* ActiveHabit.swift in Sources */,
