@@ -57,6 +57,7 @@
 		D38647782B5541010016619C /* StepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38647772B5541010016619C /* StepperView.swift */; };
 		D386477A2B5590810016619C /* ChartsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38647792B5590810016619C /* ChartsBar.swift */; };
 		D386477C2B5671C40016619C /* ChartsPie.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386477B2B5671C40016619C /* ChartsPie.swift */; };
+		D386477E2B567BB80016619C /* PillTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386477D2B567BB80016619C /* PillTagView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		D38647772B5541010016619C /* StepperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperView.swift; sourceTree = "<group>"; };
 		D38647792B5590810016619C /* ChartsBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsBar.swift; sourceTree = "<group>"; };
 		D386477B2B5671C40016619C /* ChartsPie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsPie.swift; sourceTree = "<group>"; };
+		D386477D2B567BB80016619C /* PillTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillTagView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +256,7 @@
 				D38647772B5541010016619C /* StepperView.swift */,
 				D38647792B5590810016619C /* ChartsBar.swift */,
 				D386477B2B5671C40016619C /* ChartsPie.swift */,
+				D386477D2B567BB80016619C /* PillTagView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				D33F20D32B2875B600C2353E /* DoneHabitTrackerApp.swift in Sources */,
 				D386477A2B5590810016619C /* ChartsBar.swift in Sources */,
 				D38647642B50B3FF0016619C /* ProfileView.swift in Sources */,
+				D386477E2B567BB80016619C /* PillTagView.swift in Sources */,
 				D386477C2B5671C40016619C /* ChartsPie.swift in Sources */,
 				D38647782B5541010016619C /* StepperView.swift in Sources */,
 				D38647182B50154B0016619C /* LoginView.swift in Sources */,

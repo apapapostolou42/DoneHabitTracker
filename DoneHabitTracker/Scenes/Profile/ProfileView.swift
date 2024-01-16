@@ -14,6 +14,8 @@ struct ProfileView: View {
     @StateObject var viewModel: ProfileViewModel
     
     @State var currentGlasses: Int = 0
+    @State var selectedPill: PillTag? = nil
+    
     
     init(isLoading: Binding<Bool>) {
         self._isLoading = isLoading
@@ -36,6 +38,18 @@ struct ProfileView: View {
             }
             
             Spacer()
+            
+            PillTagsView(
+                pillTags: [
+                    PillTag(text: "All"),
+                    PillTag(text: "Fitness"),
+                    PillTag(text: "Daily"),
+                    PillTag(text: "Custom"),
+                    PillTag(text: "Item 1"),
+                    PillTag(text: "Item 2")
+                ],
+                selectedTag: $selectedPill
+            )
             
             ChartsBar(dayData: viewModel.dayData, weekData:  viewModel.weekData)
             
