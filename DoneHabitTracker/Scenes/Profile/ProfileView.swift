@@ -11,9 +11,6 @@ struct ProfileView: View {
     
     @StateObject var viewModel: ProfileViewModel
     
-    @State var selectedPill: PillTag? = nil
-    
-    
     init(appModel: ApplicationModel) {
         self._viewModel = StateObject(wrappedValue: ProfileViewModel(appModel: appModel))
     }
@@ -68,7 +65,7 @@ struct ProfileView: View {
         @ObservedObject var viewModel: ProfileViewModel
         
         var body: some View {
-            VStack(spacing: 32) {
+            VStack(alignment: .leading ,spacing: 32) {
                 HStack(spacing: 0) {
                     Text("profile_form_name")
                         .frame(width: 100, alignment: .leading)
@@ -76,7 +73,7 @@ struct ProfileView: View {
                     AppTextField("profile_form_name_hint", text: .constant(""))
 
                 }
-                HStack(spacing: 0) {
+                HStack(alignment: .center, spacing: 0) {
                     Text("profile_form_email".localized)
                         .frame(width: 100, alignment: .leading)
                     AppTextField("profile_form_email_hint", text: .constant(""))
@@ -84,12 +81,20 @@ struct ProfileView: View {
                 HStack(alignment: .top, spacing: 0) {
                     Text("profile_form_password")
                         .frame(width: 100, alignment: .leading)
-                    VStack(spacing: 16) {
-                        AppTextField("profile_form_password_new", text: .constant(""))
-                        
-                        AppTextField("profile_form_password_repeat", text: .constant(""))
+                    
+                    Button(action: {
+                       
+                    }) {
+                        Text("profile_request_password")
+                            .padding(8)
+                            .foregroundColor(.white)
+                            .background(Color.btnEnabled)
+                            .cornerRadius(5)
                     }
+                    .offset(CGSize(width: 0.0, height: -6.0))
+                    .disabled(false)
                 }
+                .padding(.bottom, 16)
                 
                 HStack(spacing: 64) {
                     Button(action: {
@@ -102,6 +107,8 @@ struct ProfileView: View {
                             .cornerRadius(5)
                     }
                     .disabled(false)
+                    
+                    Spacer()
                     
                     Button(action: {
                         viewModel.logout()
@@ -153,8 +160,6 @@ struct ProfileView: View {
                 ProfileFields(viewModel: viewModel)
                 
                 ProfileSettings()
-                
-                
             }
         }
         .padding(16)

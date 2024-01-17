@@ -27,7 +27,7 @@ struct MainView: View {
                         Image("ti_home")
                             .renderingMode(.template)
                             .foregroundColor(selectedTab == 0 ? Color.btnEnabled : Color.btnDisabled)
-                        Text("ti_home".localized)
+                        Text("ti_home")
                     }
                     .tag(0)
                 
