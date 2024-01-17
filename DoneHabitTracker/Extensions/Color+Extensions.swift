@@ -45,4 +45,7 @@ extension Color {
     static let appGreenLight = Color(hex: "0AE629")
     static let appGreenDeep = Color(hex: "15C203")
     static let appYellow = Color(hex: "E5F01A")
+    
+    static let btnEnabled: Color = .blue
+    static let btnDisabled: Color = .gray
 }

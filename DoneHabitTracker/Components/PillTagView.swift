@@ -67,7 +67,7 @@ struct PillTagsView: View {
         Text(pillTag.text)
             .padding(.horizontal)
             .padding(.vertical, 8)
-            .background(selectedTag == pillTag ? Color.blue : Color.gray.opacity(colorScheme == .dark ? 0.4 : 0.2))
+            .background(selectedTag == pillTag ? Color.btnEnabled : Color.gray.opacity(colorScheme == .dark ? 0.4 : 0.2))
             .foregroundColor(selectedTag == pillTag ? .white : .primary)
             .clipShape(Capsule())
             .onTapGesture {

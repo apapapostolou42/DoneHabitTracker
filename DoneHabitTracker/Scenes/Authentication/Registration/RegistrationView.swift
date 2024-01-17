@@ -64,7 +64,7 @@ struct RegistrationView: View {
                     .padding(.horizontal, 32)
                     .padding(.vertical, 16)
                     .foregroundColor(.white)
-                    .background(viewModel.isFormValid ? Color.blue : Color.gray)
+                    .background(viewModel.isFormValid ? Color.btnEnabled : Color.btnDisabled)
                     .cornerRadius(5)
             }
             .disabled(!viewModel.isFormValid)

@@ -98,7 +98,7 @@ struct ProfileView: View {
                         Text("profile_btn_update")
                             .padding(8)
                             .foregroundColor(.white)
-                            .background(Color.blue)
+                            .background(Color.btnEnabled)
                             .cornerRadius(5)
                     }
                     .disabled(false)
@@ -109,7 +109,7 @@ struct ProfileView: View {
                         Text("profile_btn_logout")
                             .padding(8)
                             .foregroundColor(.white)
-                            .background(Color.blue)
+                            .background(Color.btnEnabled)
                             .cornerRadius(5)
                     }
                     .disabled(false)

@@ -25,7 +25,7 @@ struct StepperView: View {
                 Image(systemName: "minus")
                     .frame(width: 32, height: 32)
                     .foregroundColor(.white)
-                    .background(value > 0 && enabled ? Color.blue : Color.gray)
+                    .background(value > 0 && enabled ? Color.btnEnabled : Color.btnDisabled)
                     .cornerRadius(5)
             }
             .disabled(value <= 0 || !enabled)
@@ -42,7 +42,7 @@ struct StepperView: View {
                 Image(systemName: "plus")
                     .frame(width: 32, height: 32)
                     .foregroundColor(.white)
-                    .background(enabled ? Color.blue : Color.gray)
+                    .background(enabled ? Color.btnEnabled : Color.btnDisabled)
                     .cornerRadius(5)
             }
             .disabled(!enabled)

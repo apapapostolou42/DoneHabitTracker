@@ -22,7 +22,7 @@ struct MainView: View {
                     .tabItem {
                         Image("ti_home")
                             .renderingMode(.template)
-                            .foregroundColor(selectedTab == 0 ? .blue : .gray)
+                            .foregroundColor(selectedTab == 0 ? Color.btnEnabled : Color.btnDisabled)
                         Text("ti_home".localized)
                     }
                     .tag(0)
@@ -31,7 +31,7 @@ struct MainView: View {
                     .tabItem {
                         Image("ti_star")
                             .renderingMode(.template)
-                            .foregroundColor(selectedTab == 0 ? .blue : .gray)
+                            .foregroundColor(selectedTab == 0 ? Color.btnEnabled : Color.btnDisabled)
                         Text("ti_habits")
                     }
                     .tag(1)
@@ -40,7 +40,7 @@ struct MainView: View {
                     .tabItem {
                         Image("ti_plus")
                             .renderingMode(.template)
-                            .foregroundColor(selectedTab == 0 ? .blue : .gray)
+                            .foregroundColor(selectedTab == 0 ? Color.btnEnabled : Color.btnDisabled)
                         Text("ti_new")
                     }
                     .tag(2)
@@ -49,7 +49,7 @@ struct MainView: View {
                     .tabItem {
                         Image("ti_statistics")
                             .renderingMode(.template)
-                            .foregroundColor(selectedTab == 0 ? .blue : .gray)
+                            .foregroundColor(selectedTab == 0 ? Color.btnEnabled : Color.btnDisabled)
                         Text("ti_statistics")
                     }
                     .tag(3)
@@ -58,7 +58,7 @@ struct MainView: View {
                     .tabItem {
                         Image("ti_profile")
                             .renderingMode(.template)
-                            .foregroundColor(selectedTab == 0 ? .blue : .gray)
+                            .foregroundColor(selectedTab == 0 ? Color.btnEnabled : Color.btnDisabled)
                         Text("ti_profile")
                     }
                     .tag(4)
