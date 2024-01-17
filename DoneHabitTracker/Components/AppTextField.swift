@@ -17,7 +17,7 @@ struct AppTextField: View {
     
     @Environment(\.colorScheme) var colorScheme
     
-    init(hint: String = "", text: Binding<String>, secured: Bool = false, borderColor: Color = .secondary, borderWidth: CGFloat = 2.0, cornerRadius: CGFloat = 5.0) {
+    init(_ hint: String = "", text: Binding<String>, secured: Bool = false, borderColor: Color = .secondary, borderWidth: CGFloat = 2.0, cornerRadius: CGFloat = 5.0) {
         self.hint = hint
         self._text = text
         self.secured = secured
@@ -54,11 +54,11 @@ struct AppTextField: View {
 
 #Preview {
     VStack {
-        AppTextField(hint: "Enter Value", text: .constant(""), borderColor: .secondary, borderWidth: 2.0)
+        AppTextField("Enter Value", text: .constant(""), borderColor: .secondary, borderWidth: 2.0)
         
-        AppTextField(hint: "Enter Value", text: .constant("xxx"), borderColor: .secondary, borderWidth: 2.0)
+        AppTextField("Enter Value", text: .constant("xxx"), borderColor: .secondary, borderWidth: 2.0)
         
-        AppTextField(hint: "Enter Value", text: .constant("xxx"), secured: true, borderColor: .secondary, borderWidth: 2.0)
+        AppTextField("Enter Value", text: .constant("xxx"), secured: true, borderColor: .secondary, borderWidth: 2.0)
     }
     .padding(32)
 }

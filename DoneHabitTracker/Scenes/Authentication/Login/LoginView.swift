@@ -20,55 +20,68 @@ struct LoginView: View {
     }
     
     var body: some View {
+        
+        VStack(alignment: .center, spacing: 32) {
             
-        VStack(alignment: .leading, spacing: 0) {
+            Spacer()
             
-            Text("Login")
-                .padding(.leading)
+            Image("logo")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 240)
+            
+            VStack {
+                
+                AppTextField("Email", text: $viewModel.email)
+                    .textInputAutocapitalization(.never) // Disables auto-capitalization
+                    .disableAutocorrection(true)         // Disables auto-correction
+                
+                AppTextField("Password", text: $viewModel.password, secured: true)
+                    .textInputAutocapitalization(.never) // Disables auto-capitalization
+                    .disableAutocorrection(true)         // Disables auto-correction
+            }
+            
+            
+            VStack(alignment: .center, spacing: 16) {
+                HStack {
+                    Spacer()
+                    
+                    Button(action: {
+                        Task {
+                            await viewModel.login()
+                        }
+                    }) {
+                        Text("Login")
+                            .padding(16)
+                            .foregroundColor(.white)
+                            .background(viewModel.isFormValid ? Color.blue : Color.gray)
+                            .cornerRadius(5)
+                    }
+                    .disabled(!viewModel.isFormValid)
+                    
+                    Spacer()
+                }
                 .font(.title)
                 
-            
-            Form {
-                TextField("Email", text: $viewModel.email)
-                    .textInputAutocapitalization(.never) // Disables auto-capitalization
-                    .disableAutocorrection(true)         // Disables auto-correction
-                
-                SecureField("Password", text: $viewModel.password)
-                    .textInputAutocapitalization(.never) // Disables auto-capitalization
-                    .disableAutocorrection(true)         // Disables auto-correction
-                
-                
-                VStack(alignment: .center, spacing: 16) {
-                    HStack {
-                        Spacer()
-                        Button("Login") {
-                            Task {
-                                await viewModel.login()
-                            }
-                        }
-                        .disabled(!viewModel.isFormValid)
-                        .buttonStyle(.borderless)
-                        Spacer()
+                HStack {
+                    Spacer()
+                    Button("SignUp") {
+                        appModel.routes.append(.signupRoute)
                     }
-                    .font(.title)
-
-                    HStack {
-                        Spacer()
-                        Button("SignUp") {
-                            appModel.routes.append(.signupRoute)
-                        }
-                        .buttonStyle(.borderless)
-                        Spacer()
-                    }
-                }
-                
-                if viewModel.errorMessage != "" {
-                    Text(viewModel.errorMessage)
-                        .foregroundColor(.red)
+                    .buttonStyle(.borderless)
+                    Spacer()
                 }
             }
+            
+            if viewModel.errorMessage != "" {
+                Text(viewModel.errorMessage)
+                    .foregroundColor(.red)
+            }
+            
+            Spacer()
+            
         }
-        .padding(.top, 16)
+        .padding(16)
         .background(Color(UIColor.systemGroupedBackground))
         .onAppear {
             viewModel.setAppModel(appModel)

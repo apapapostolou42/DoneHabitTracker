@@ -20,53 +20,58 @@ struct RegistrationView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .center, spacing: 32) {
             
-            Text("Registration")
-                .padding(.leading)
-                .font(.title)
+            Spacer()
             
-            Form {
-                TextField("Email", text: $viewModel.email)
+            Image("logo")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 240)
+            
+            VStack {
+                
+                AppTextField("Email", text: $viewModel.email)
                     .textInputAutocapitalization(.never) // Disables auto-capitalization
                     .disableAutocorrection(true)         // Disables auto-correction
                     .foregroundColor(viewModel.isEmailValid ? .primary : .red)
                 
-                SecureField("Password", text: $viewModel.password)
+                AppTextField("Password", text: $viewModel.password, secured: true)
                     .textInputAutocapitalization(.never) // Disables auto-capitalization
                     .disableAutocorrection(true)         // Disables auto-correction
                 
-                SecureField("Repeat Password", text: $viewModel.repeatPassword)
+                AppTextField("Repeat Password", text: $viewModel.repeatPassword, secured: true)
                     .textInputAutocapitalization(.never) // Disables auto-capitalization
                     .disableAutocorrection(true)         // Disables auto-correction
                     .foregroundColor(viewModel.passwordsMatch ? .primary : .red)
                 
-                TextField("Profile Name", text: $viewModel.profile)
+                AppTextField("Profile Name", text: $viewModel.profile)
                     .textInputAutocapitalization(.never) // Disables auto-capitalization
                     .disableAutocorrection(true)         // Disables auto-correction
                 
-                HStack {
-                    
-                    Spacer()
-                    
-                    Button("SignUp") {
-                        Task {
-                            await viewModel.signUp()
-                        }
-                    }
-                    .disabled(!viewModel.isFormValid)
-                    .buttonStyle(.borderless)
-                    
-                    Spacer()
+            }
+            
+            Button(action: {
+                Task {
+                    await viewModel.signUp()
                 }
-                
-                if viewModel.errorMessage != "" {
-                    Text(viewModel.errorMessage)
-                        .foregroundColor(.red)
-                }
+            }) {
+                Text("SignUp")
+                    .padding(16)
+                    .foregroundColor(.white)
+                    .background(viewModel.isFormValid ? Color.blue : Color.gray)
+                    .cornerRadius(5)
+            }
+            .disabled(!viewModel.isFormValid)
+            
+            Spacer()
+            
+            if viewModel.errorMessage != "" {
+                Text(viewModel.errorMessage)
+                    .foregroundColor(.red)
             }
         }
-        .padding(.top, 16)
+        .padding(16)
         .background(Color(UIColor.systemGroupedBackground))
         .onAppear {
             viewModel.setAppModel(appModel)

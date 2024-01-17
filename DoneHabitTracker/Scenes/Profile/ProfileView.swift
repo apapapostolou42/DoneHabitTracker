@@ -73,21 +73,21 @@ struct ProfileView: View {
                     Text("profile_form_name")
                         .frame(width: 100, alignment: .leading)
                     
-                    AppTextField(hint: "profile_form_name_hint", text: .constant(""))
+                    AppTextField("profile_form_name_hint", text: .constant(""))
 
                 }
                 HStack(spacing: 0) {
                     Text("profile_form_email".localized)
                         .frame(width: 100, alignment: .leading)
-                    AppTextField(hint: "profile_form_email_hint", text: .constant(""))
+                    AppTextField("profile_form_email_hint", text: .constant(""))
                 }
                 HStack(alignment: .top, spacing: 0) {
                     Text("profile_form_password")
                         .frame(width: 100, alignment: .leading)
                     VStack(spacing: 16) {
-                        AppTextField(hint: "profile_form_password_new", text: .constant(""))
+                        AppTextField("profile_form_password_new", text: .constant(""))
                         
-                        AppTextField(hint: "profile_form_password_repeat", text: .constant(""))
+                        AppTextField("profile_form_password_repeat", text: .constant(""))
                     }
                 }
                 
