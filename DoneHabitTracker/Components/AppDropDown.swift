@@ -30,14 +30,14 @@ struct AppDropDown: View {
     var body: some View {
         Menu {
             ForEach(options, id: \.self) { option in
-                Button(option) {
+                Button(option.localized) {
                     self.selectedItem = option
                     self.onSelection(option)
                 }
             }
         } label: {
             HStack {
-                Text(selectedItem)
+                Text(selectedItem.localized)
                     .foregroundColor(.primary)
                 Spacer()
                 Image(systemName: "arrowtriangle.down.fill")
