@@ -18,7 +18,7 @@ struct PillTag: Identifiable, Hashable {
 struct PillTagsView: View {
     let pillTags: [PillTag]
     @Binding var selectedTag: PillTag?
-    @State private var totalHeight = CGFloat.infinity  // Arbitrary initial value
+    @State private var totalHeight = CGFloat.zero  // Arbitrary initial value
     
     @Environment(\.colorScheme) var colorScheme
     
