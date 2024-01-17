@@ -17,7 +17,7 @@ struct AppDropDown: View {
     
     @Environment(\.colorScheme) var colorScheme
     
-    init(selectedItem: Binding<String>, options: [String], onSelection: @escaping (String) -> Void, borderColor: Color = .secondary, borderWidth: CGFloat = 2.0, cornerRadius: CGFloat = 5.0) {
+    init(selectedItem: Binding<String>, options: [String], borderColor: Color = .secondary, borderWidth: CGFloat = 2.0, cornerRadius: CGFloat = 5.0, onSelection: @escaping (String) -> Void = {_ in} ) {
         
         self._selectedItem = selectedItem
         self.options = options

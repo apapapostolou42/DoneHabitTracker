@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import FirebaseAuth
 
 struct ProfileView: View {
     
@@ -67,6 +66,9 @@ struct ProfileView: View {
     }
     
     struct ProfileFields: View {
+        
+        @EnvironmentObject private var appModel: ApplicationModel
+        
         var body: some View {
             VStack(spacing: 32) {
                 HStack(spacing: 0) {
@@ -104,7 +106,7 @@ struct ProfileView: View {
                     .disabled(false)
                     
                     Button(action: {
-                        try? Auth.auth().signOut()
+                        appModel.logout()
                     }) {
                         Text("profile_btn_logout")
                             .padding(8)
@@ -119,6 +121,9 @@ struct ProfileView: View {
     }
     
     struct ProfileSettings: View {
+        
+        @EnvironmentObject private var appModel: ApplicationModel
+        
         var body: some View {
             VStack(alignment: .leading) {
                 Text("profile_settings")
@@ -129,9 +134,7 @@ struct ProfileView: View {
                     Text("profile_settings_mode")
                         .frame(width: 100, alignment: .leading)
                     
-                    AppDropDown(selectedItem: .constant("System Default"), options: ["System Default", "Light", "Dark"]) { selection in
-                        
-                    }
+                    AppDropDown(selectedItem: $appModel.selectedTheme, options: appModel.themes.map{$0.rawValue})
                 }
                 
                 HStack(spacing: 0) {

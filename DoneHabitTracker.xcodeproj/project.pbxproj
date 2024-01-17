@@ -70,6 +70,7 @@
 		D38647982B56F7040016619C /* NewHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38647972B56F7040016619C /* NewHabitViewModel.swift */; };
 		D386479B2B56F8310016619C /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386479A2B56F8310016619C /* StatisticsView.swift */; };
 		D386479D2B56F83F0016619C /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386479C2B56F83F0016619C /* StatisticsViewModel.swift */; };
+		D3D22A272B57D5E5009BE6E9 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D22A262B57D5E5009BE6E9 /* View+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +111,7 @@
 		D38647972B56F7040016619C /* NewHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHabitViewModel.swift; sourceTree = "<group>"; };
 		D386479A2B56F8310016619C /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		D386479C2B56F83F0016619C /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
+		D3D22A262B57D5E5009BE6E9 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +238,7 @@
 			children = (
 				D386475C2B502B4B0016619C /* String+Extensions.swift */,
 				D38647702B5524E40016619C /* Color+Extensions.swift */,
+				D3D22A262B57D5E5009BE6E9 /* View+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				D386477C2B5671C40016619C /* ChartsPie.swift in Sources */,
 				D386479D2B56F83F0016619C /* StatisticsViewModel.swift in Sources */,
 				D38647782B5541010016619C /* StepperView.swift in Sources */,
+				D3D22A272B57D5E5009BE6E9 /* View+Extensions.swift in Sources */,
 				D38647182B50154B0016619C /* LoginView.swift in Sources */,
 				D386475F2B50421E0016619C /* ApplicationModel.swift in Sources */,
 				D38647712B5524E40016619C /* Color+Extensions.swift in Sources */,

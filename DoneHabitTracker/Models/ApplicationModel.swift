@@ -8,13 +8,26 @@
 import Foundation
 import FirebaseAuth
 import Network
+import Combine
 
 enum Route: Hashable {
     case signupRoute
 }
 
+enum ThemeType: String {
+    case system = "theme_str_system"
+    case dark = "theme_str_dark"
+    case light = "theme_str_light"
+}
+
+enum UserDefaultsKey: String {
+    case theme = "THEME"
+}
+
 @MainActor
 class ApplicationModel: ObservableObject {
+    
+    private var cancellables = Set<AnyCancellable>()
     
     // Checking Network Availability
     @Published var isNetworkDown: Bool = false
@@ -31,10 +44,24 @@ class ApplicationModel: ObservableObject {
         routes = [route]
     }
     
+    // application themes
+    var themes: [ThemeType] = [.system, .light, .dark]
+    @Published var selectedTheme: String
+    
     init() {
-        initializeNetowrkMonitor()
+        // Set Theme
+        self.selectedTheme = UserDefaults.standard.string(forKey: UserDefaultsKey.theme.rawValue) ?? themes[0].rawValue
+        $selectedTheme
+            .sink { newTheme in
+                UserDefaults.standard.set(newTheme, forKey: UserDefaultsKey.theme.rawValue)
+            }
+            .store(in: &cancellables)
         
+        // Monitor Network
+        initializeNetowrkMonitor()
         self.user = Auth.auth().currentUser
+        
+        // Track User status
         setupAuthenticationListener()
     }
     
@@ -61,5 +88,9 @@ class ApplicationModel: ObservableObject {
                 self.user = nil
             }
         }
+    }
+    
+    func logout() {
+        try? Auth.auth().signOut()
     }
 }
