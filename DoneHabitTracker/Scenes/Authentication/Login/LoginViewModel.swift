@@ -14,15 +14,23 @@ class LoginViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var errorMessage: String = ""
+    @Published var isEmailValid: Bool = true
     
     var appModel: ApplicationModel
     
     var isFormValid: Bool {
-        !email.isEmptyOrWhiteSpace && !password.isEmptyOrWhiteSpace
+        !email.isEmptyOrWhiteSpace && !password.isEmptyOrWhiteSpace &&
+        email.isValidEmailAddress
     }
     
     init(appModel: ApplicationModel) {
         self.appModel = appModel
+        
+        $email
+            .receive(on: RunLoop.main)
+            .debounce(for: 0.1, scheduler: RunLoop.main)
+            .compactMap { $0.isValidEmailAddress }
+            .assign(to: &$isEmailValid)
     }
 
     func setAppModel(_ appModel: ApplicationModel) {

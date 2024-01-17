@@ -31,6 +31,7 @@ struct LoginView: View {
                 AppTextField("login_email", text: $viewModel.email)
                     .textInputAutocapitalization(.never) // Disables auto-capitalization
                     .disableAutocorrection(true)         // Disables auto-correction
+                    .foregroundColor(viewModel.isEmailValid ? .primary : .red)
                 
                 AppTextField("login_password", text: $viewModel.password, secured: true)
                     .textInputAutocapitalization(.never) // Disables auto-capitalization
