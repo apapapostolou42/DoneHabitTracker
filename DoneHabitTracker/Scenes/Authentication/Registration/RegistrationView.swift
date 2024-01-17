@@ -48,7 +48,11 @@ struct RegistrationView: View {
                 AppTextField("Profile Name", text: $viewModel.profile)
                     .textInputAutocapitalization(.never) // Disables auto-capitalization
                     .disableAutocorrection(true)         // Disables auto-correction
-                
+            }
+            
+            if viewModel.errorMessage != "" {
+                Text(viewModel.errorMessage)
+                    .foregroundColor(.red)
             }
             
             Button(action: {
@@ -65,11 +69,6 @@ struct RegistrationView: View {
             .disabled(!viewModel.isFormValid)
             
             Spacer()
-            
-            if viewModel.errorMessage != "" {
-                Text(viewModel.errorMessage)
-                    .foregroundColor(.red)
-            }
         }
         .padding(16)
         .background(Color(UIColor.systemGroupedBackground))

@@ -41,6 +41,10 @@ struct LoginView: View {
                     .disableAutocorrection(true)         // Disables auto-correction
             }
             
+            if viewModel.errorMessage != "" {
+                Text(viewModel.errorMessage)
+                    .foregroundColor(.red)
+            }
             
             VStack(alignment: .center, spacing: 16) {
                 HStack {
@@ -73,13 +77,7 @@ struct LoginView: View {
                 }
             }
             
-            if viewModel.errorMessage != "" {
-                Text(viewModel.errorMessage)
-                    .foregroundColor(.red)
-            }
-            
             Spacer()
-            
         }
         .padding(16)
         .background(Color(UIColor.systemGroupedBackground))

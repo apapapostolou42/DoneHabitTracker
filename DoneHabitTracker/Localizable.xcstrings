@@ -13,9 +13,6 @@
     "Count" : {
 
     },
-    "Email" : {
-
-    },
     "Habits Tab" : {
 
     },
@@ -38,12 +35,6 @@
 
     },
     "OK" : {
-
-    },
-    "Password" : {
-
-    },
-    "Profile Name" : {
 
     },
     "profile_btn_logout" : {
@@ -199,12 +190,6 @@
           }
         }
       }
-    },
-    "Registration" : {
-
-    },
-    "Repeat Password" : {
-
     },
     "SignUp" : {
 
