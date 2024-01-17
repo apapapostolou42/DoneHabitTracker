@@ -10,16 +10,14 @@ import FirebaseAuth
 
 struct HomeView: View {
     
-    @Binding var isLoading: Bool
     @StateObject var viewModel: HomeViewModel
     
     @State var currentGlasses: Int = 0
     @State var selectedPill: PillTag? = nil
     
     
-    init(isLoading: Binding<Bool>) {
-        self._isLoading = isLoading
-        self._viewModel = StateObject(wrappedValue: HomeViewModel(isLoading: isLoading))
+    init(appModel: ApplicationModel) {
+        self._viewModel = StateObject(wrappedValue: HomeViewModel(appModel: appModel))
     }
     
     var body: some View {
@@ -90,5 +88,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView(isLoading: .constant(false))
+    HomeView(appModel: ApplicationModel())
 }

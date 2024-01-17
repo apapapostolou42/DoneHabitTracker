@@ -10,15 +10,19 @@ import FirebaseAuth
 
 struct MainView: View {
     
-    @Binding var isLoading: Bool
+    private var appModel: ApplicationModel
     @State private var selectedTab = 0
+    
+    init(appModel: ApplicationModel) {
+        self.appModel = appModel
+    }
     
     var body: some View {
         
         ZStack {
             TabView(selection: $selectedTab) {
                 
-                HomeView(isLoading: $isLoading)
+                HomeView(appModel: appModel)
                     .tabItem {
                         Image("ti_home")
                             .renderingMode(.template)
@@ -27,7 +31,7 @@ struct MainView: View {
                     }
                     .tag(0)
                 
-                HabitsView(isLoading: $isLoading)
+                HabitsView(appModel: appModel)
                     .tabItem {
                         Image("ti_star")
                             .renderingMode(.template)
@@ -36,7 +40,7 @@ struct MainView: View {
                     }
                     .tag(1)
                 
-                NewHabitView(isLoading: $isLoading)
+                NewHabitView(appModel: appModel)
                     .tabItem {
                         Image("ti_plus")
                             .renderingMode(.template)
@@ -45,7 +49,7 @@ struct MainView: View {
                     }
                     .tag(2)
                 
-                StatisticsView(isLoading: $isLoading)
+                StatisticsView(appModel: appModel)
                     .tabItem {
                         Image("ti_statistics")
                             .renderingMode(.template)
@@ -54,7 +58,7 @@ struct MainView: View {
                     }
                     .tag(3)
                 
-                ProfileView(isLoading: $isLoading)
+                ProfileView(appModel: appModel)
                     .tabItem {
                         Image("ti_profile")
                             .renderingMode(.template)
@@ -68,5 +72,5 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView(isLoading: .constant(false))
+    MainView(appModel: ApplicationModel())
 }

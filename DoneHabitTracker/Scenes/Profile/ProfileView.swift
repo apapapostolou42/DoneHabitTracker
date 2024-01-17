@@ -9,16 +9,14 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    @Binding var isLoading: Bool
     @StateObject var viewModel: ProfileViewModel
     
     @State var currentGlasses: Int = 0
     @State var selectedPill: PillTag? = nil
     
     
-    init(isLoading: Binding<Bool>) {
-        self._isLoading = isLoading
-        self._viewModel = StateObject(wrappedValue: ProfileViewModel(isLoading: isLoading))
+    init(appModel: ApplicationModel) {
+        self._viewModel = StateObject(wrappedValue: ProfileViewModel(appModel: appModel))
     }
     
     struct ProfileHeader: View {
@@ -166,5 +164,5 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView(isLoading: .constant(false))
+    ProfileView(appModel: ApplicationModel())
 }

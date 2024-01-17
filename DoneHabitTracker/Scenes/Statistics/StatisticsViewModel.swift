@@ -9,9 +9,9 @@ import SwiftUI
 
 @MainActor
 class StatisticsViewModel : ObservableObject {
-    var isLoading: Binding<Bool>
+    var appModel: ApplicationModel
     
-    init(isLoading: Binding<Bool>) {
-        self.isLoading = isLoading
+    init(appModel: ApplicationModel) {
+        self.appModel = appModel
     }
 }

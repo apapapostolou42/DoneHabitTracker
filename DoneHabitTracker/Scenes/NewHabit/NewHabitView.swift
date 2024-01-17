@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct NewHabitView: View {
-    @Binding var isLoading: Bool
     @StateObject var viewModel: NewHabitViewModel
     
-    init(isLoading: Binding<Bool>) {
-        self._isLoading = isLoading
-        self._viewModel = StateObject(wrappedValue: NewHabitViewModel(isLoading: isLoading))
+    init(appModel: ApplicationModel) {
+        self._viewModel = StateObject(wrappedValue: NewHabitViewModel(appModel: appModel))
     }
     
     var body: some View {
@@ -22,5 +20,5 @@ struct NewHabitView: View {
 }
 
 #Preview {
-    NewHabitView(isLoading: .constant(false))
+    NewHabitView(appModel: ApplicationModel())
 }

@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct StatisticsView: View {
-    @Binding var isLoading: Bool
     @StateObject var viewModel: StatisticsViewModel
     
-    init(isLoading: Binding<Bool>) {
-        self._isLoading = isLoading
-        self._viewModel = StateObject(wrappedValue: StatisticsViewModel(isLoading: isLoading))
+    init(appModel: ApplicationModel) {
+        self._viewModel = StateObject(wrappedValue: StatisticsViewModel(appModel: appModel))
     }
     
     var body: some View {
@@ -22,5 +20,5 @@ struct StatisticsView: View {
 }
 
 #Preview {
-    StatisticsView(isLoading: .constant(false))
+    StatisticsView(appModel: ApplicationModel())
 }

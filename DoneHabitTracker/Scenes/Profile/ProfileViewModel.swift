@@ -11,11 +11,9 @@ import FirebaseFirestore
 
 @MainActor
 class ProfileViewModel : ObservableObject {
+    var appModel: ApplicationModel
     
-    var isLoading: Binding<Bool>
-    @Published var user: FSUser?
-    
-    init(isLoading: Binding<Bool>) {
-        self.isLoading = isLoading
+    init(appModel: ApplicationModel) {
+        self.appModel = appModel
     }
 }

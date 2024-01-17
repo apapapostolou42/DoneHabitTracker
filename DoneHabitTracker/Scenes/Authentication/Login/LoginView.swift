@@ -9,8 +9,6 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @EnvironmentObject private var appModel: ApplicationModel
-    
     @StateObject var viewModel: LoginViewModel
     
     init(appModel: ApplicationModel) {

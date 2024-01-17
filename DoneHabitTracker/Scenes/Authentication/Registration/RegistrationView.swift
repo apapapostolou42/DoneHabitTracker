@@ -8,15 +8,11 @@
 import SwiftUI
 
 struct RegistrationView: View {
-    
-    @Binding var isLoading: Bool
-    @EnvironmentObject private var appModel: ApplicationModel
-    
+
     @StateObject var viewModel: RegistrationViewModel
     
-    init(isLoading: Binding<Bool>) {
-        self._isLoading = isLoading
-        self._viewModel = StateObject(wrappedValue: RegistrationViewModel(isLoading: isLoading))
+    init(appModel: ApplicationModel) {
+        self._viewModel = StateObject(wrappedValue: RegistrationViewModel(appModel: appModel))
     }
     
     var body: some View {
@@ -73,12 +69,9 @@ struct RegistrationView: View {
         }
         .padding(16)
         .background(Color(UIColor.systemGroupedBackground))
-        .onAppear {
-            viewModel.setAppModel(appModel)
-        }
     }
 }
 
 #Preview {
-    RegistrationView(isLoading: .constant(false))
+    RegistrationView(appModel: ApplicationModel())
 }

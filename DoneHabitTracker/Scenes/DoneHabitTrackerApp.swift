@@ -22,7 +22,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct DoneHabitTrackerApp: App {
     
     @State private var showSplash: Bool = true
-//    @State private var isLoading = false
     
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
@@ -37,8 +36,7 @@ struct DoneHabitTrackerApp: App {
                     NavigationStack(path: $appModel.routes) {
                         ZStack {
                             if appModel.user != nil {
-                                MainView(isLoading: $appModel.isLoading)
-//                                MainView()
+                                MainView(appModel: appModel)
                             }
                             else {
                                 LoginView(appModel: appModel);
@@ -46,8 +44,7 @@ struct DoneHabitTrackerApp: App {
                         }
                         .navigationDestination(for: Route.self) { route in
                             switch route {
-                                case .signupRoute: RegistrationView(isLoading: $appModel.isLoading)
-//                                case .signupRoute: RegistrationView()
+                                case .signupRoute: RegistrationView(appModel: appModel)
                             }
                         }
                     }

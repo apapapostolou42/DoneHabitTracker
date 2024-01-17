@@ -11,7 +11,7 @@ import FirebaseFirestore
 
 @MainActor
 class HomeViewModel : ObservableObject {
-    var isLoading: Binding<Bool>
+    var appModel: ApplicationModel
     @Published var user: FSUser?
     
     @Published var dayData: [ChartsBar.Item] = [
@@ -24,17 +24,16 @@ class HomeViewModel : ObservableObject {
         .init(habitName: "Λεπτά Περπάτημα", value: 12),
     ]
     
-    init(isLoading: Binding<Bool>) {
-        self.isLoading = isLoading
-        loadUserData()
+    init(appModel: ApplicationModel) {
+        self.appModel = appModel
     }
     
     func loadUserData() {
         if let uid = Auth.auth().currentUser?.uid {
             Task {
-                isLoading.wrappedValue = true
+                appModel.isLoading = true
                 self.user = await fetchFirestoreUserInfo(userID: uid)
-                isLoading.wrappedValue = false
+                appModel.isLoading = false
             }
         }
     }

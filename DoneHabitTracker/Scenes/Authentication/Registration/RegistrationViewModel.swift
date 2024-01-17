@@ -23,8 +23,7 @@ class RegistrationViewModel: ObservableObject {
     @Published var passwordsMatch: Bool = false
     @Published var isEmailValid: Bool = false
     
-    var appModel: ApplicationModel?
-    var isLoading: Binding<Bool>
+    var appModel: ApplicationModel
     
     var isFormValid: Bool {
         !email.isEmptyOrWhiteSpace && isEmailValid &&
@@ -34,8 +33,8 @@ class RegistrationViewModel: ObservableObject {
         !profile.isEmptyOrWhiteSpace
     }
     
-    init(isLoading: Binding<Bool>) {
-        self.isLoading = isLoading
+    init(appModel: ApplicationModel) {
+        self.appModel = appModel
         
         Publishers.CombineLatest(
             $password.debounce(for: 0.1, scheduler: RunLoop.main),
@@ -60,20 +59,18 @@ class RegistrationViewModel: ObservableObject {
     }
     
     func signUp() async {
-        guard let appModel = appModel else { return }
-        
         do {
-            isLoading.wrappedValue = true
+            appModel.isLoading = true
             let result = try await Auth.auth().createUser(withEmail: email.trim(), password: password.trim())
             errorMessage = ""
             appModel.user = result.user
             await updateFirestoreUserInfo(user: result.user)
-            isLoading.wrappedValue = false
+            appModel.isLoading = false
             appModel.routes.removeLast()
         }
         catch {
             errorMessage = error.localizedDescription
-            isLoading.wrappedValue = false
+            appModel.isLoading = false
             appModel.user = nil
         }
     }
