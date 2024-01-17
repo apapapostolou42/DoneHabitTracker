@@ -32,11 +32,11 @@ struct LoginView: View {
             
             VStack {
                 
-                AppTextField("Email", text: $viewModel.email)
+                AppTextField("login_email", text: $viewModel.email)
                     .textInputAutocapitalization(.never) // Disables auto-capitalization
                     .disableAutocorrection(true)         // Disables auto-correction
                 
-                AppTextField("Password", text: $viewModel.password, secured: true)
+                AppTextField("login_password", text: $viewModel.password, secured: true)
                     .textInputAutocapitalization(.never) // Disables auto-capitalization
                     .disableAutocorrection(true)         // Disables auto-correction
             }
@@ -55,8 +55,9 @@ struct LoginView: View {
                             await viewModel.login()
                         }
                     }) {
-                        Text("Login")
-                            .padding(16)
+                        Text("login_login")
+                            .padding(.horizontal, 32)
+                            .padding(.vertical, 16)
                             .foregroundColor(.white)
                             .background(viewModel.isFormValid ? Color.blue : Color.gray)
                             .cornerRadius(5)
@@ -69,7 +70,7 @@ struct LoginView: View {
                 
                 HStack {
                     Spacer()
-                    Button("SignUp") {
+                    Button("login_signup") {
                         appModel.routes.append(.signupRoute)
                     }
                     .buttonStyle(.borderless)

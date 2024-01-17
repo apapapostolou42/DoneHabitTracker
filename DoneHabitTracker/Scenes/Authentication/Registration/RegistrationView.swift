@@ -31,21 +31,21 @@ struct RegistrationView: View {
             
             VStack {
                 
-                AppTextField("Email", text: $viewModel.email)
+                AppTextField("signup_email", text: $viewModel.email)
                     .textInputAutocapitalization(.never) // Disables auto-capitalization
                     .disableAutocorrection(true)         // Disables auto-correction
                     .foregroundColor(viewModel.isEmailValid ? .primary : .red)
                 
-                AppTextField("Password", text: $viewModel.password, secured: true)
+                AppTextField("signup_password", text: $viewModel.password, secured: true)
                     .textInputAutocapitalization(.never) // Disables auto-capitalization
                     .disableAutocorrection(true)         // Disables auto-correction
                 
-                AppTextField("Repeat Password", text: $viewModel.repeatPassword, secured: true)
+                AppTextField("signup_password_repeat", text: $viewModel.repeatPassword, secured: true)
                     .textInputAutocapitalization(.never) // Disables auto-capitalization
                     .disableAutocorrection(true)         // Disables auto-correction
                     .foregroundColor(viewModel.passwordsMatch ? .primary : .red)
                 
-                AppTextField("Profile Name", text: $viewModel.profile)
+                AppTextField("signup_profilename", text: $viewModel.profile)
                     .textInputAutocapitalization(.never) // Disables auto-capitalization
                     .disableAutocorrection(true)         // Disables auto-correction
             }
@@ -60,8 +60,9 @@ struct RegistrationView: View {
                     await viewModel.signUp()
                 }
             }) {
-                Text("SignUp")
-                    .padding(16)
+                Text("signup_signup")
+                    .padding(.horizontal, 32)
+                    .padding(.vertical, 16)
                     .foregroundColor(.white)
                     .background(viewModel.isFormValid ? Color.blue : Color.gray)
                     .cornerRadius(5)
