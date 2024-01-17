@@ -20,8 +20,14 @@ enum ThemeType: String {
     case light = "theme_str_light"
 }
 
+enum AppLanguage: String {
+    case en = "en"
+    case el = "el"
+}
+
 enum UserDefaultsKey: String {
     case theme = "THEME"
+    case lang = "LANG"
 }
 
 @MainActor
@@ -48,14 +54,28 @@ class ApplicationModel: ObservableObject {
     var themes: [ThemeType] = [.system, .light, .dark]
     @Published var selectedTheme: String
     
+    
+    // application localization
+    var languages: [AppLanguage] = [.en, .el]
+    @Published var selectedLanguage: String
+    
+    
     @Published var isLoading = false;
     
     init() {
         // Set Theme
         self.selectedTheme = UserDefaults.standard.string(forKey: UserDefaultsKey.theme.rawValue) ?? themes[0].rawValue
+        self.selectedLanguage =  UserDefaults.standard.string(forKey: UserDefaultsKey.lang.rawValue) ?? languages[0].rawValue
+        
         $selectedTheme
             .sink { newTheme in
                 UserDefaults.standard.set(newTheme, forKey: UserDefaultsKey.theme.rawValue)
+            }
+            .store(in: &cancellables)
+        
+        $selectedLanguage
+            .sink { newLanguage in
+                UserDefaults.standard.set(newLanguage, forKey: UserDefaultsKey.lang.rawValue)
             }
             .store(in: &cancellables)
         
@@ -90,9 +110,5 @@ class ApplicationModel: ObservableObject {
                 self.user = nil
             }
         }
-    }
-    
-    func logout() {
-        try? Auth.auth().signOut()
     }
 }

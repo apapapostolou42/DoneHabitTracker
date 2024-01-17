@@ -54,7 +54,6 @@ struct DoneHabitTrackerApp: App {
                 }
             }
             .environmentObject(appModel)
-            .applyColorSchemeIfNeeded(appModel.selectedTheme)
             .overlay {
                 appModel.isLoading ? Color.black.opacity(0.6).ignoresSafeArea() : nil
             }
@@ -74,6 +73,8 @@ struct DoneHabitTrackerApp: App {
                     }
                 )
             }
+            .applyColorSchemeIfNeeded(appModel.selectedTheme)
+            .environment(\.locale, .init(identifier: appModel.selectedLanguage))
         }
     }
 }

@@ -7,7 +7,6 @@
 
 import SwiftUI
 import FirebaseAuth
-import FirebaseFirestore
 
 @MainActor
 class ProfileViewModel : ObservableObject {
@@ -15,5 +14,9 @@ class ProfileViewModel : ObservableObject {
     
     init(appModel: ApplicationModel) {
         self.appModel = appModel
+    }
+    
+    func logout() {
+        try? Auth.auth().signOut()
     }
 }

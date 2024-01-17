@@ -11,7 +11,6 @@ struct ProfileView: View {
     
     @StateObject var viewModel: ProfileViewModel
     
-    @State var currentGlasses: Int = 0
     @State var selectedPill: PillTag? = nil
     
     
@@ -66,6 +65,7 @@ struct ProfileView: View {
     struct ProfileFields: View {
         
         @EnvironmentObject private var appModel: ApplicationModel
+        @ObservedObject var viewModel: ProfileViewModel
         
         var body: some View {
             VStack(spacing: 32) {
@@ -104,7 +104,7 @@ struct ProfileView: View {
                     .disabled(false)
                     
                     Button(action: {
-                        appModel.logout()
+                        viewModel.logout()
                     }) {
                         Text("profile_btn_logout")
                             .padding(8)
@@ -139,9 +139,7 @@ struct ProfileView: View {
                     Text("profile_settings_language")
                         .frame(width: 100, alignment: .leading)
                     
-                    AppDropDown(selectedItem: .constant("English"), options: ["English", "Ελληνικά (Greek)"]) { selection in
-                        
-                    }
+                    AppDropDown(selectedItem: $appModel.selectedLanguage, options: appModel.languages.map{$0.rawValue})
                 }
             }
         }
@@ -152,7 +150,7 @@ struct ProfileView: View {
             VStack(alignment: .leading, spacing: 48) {
                 ProfileHeader()
                 
-                ProfileFields()
+                ProfileFields(viewModel: viewModel)
                 
                 ProfileSettings()
                 
