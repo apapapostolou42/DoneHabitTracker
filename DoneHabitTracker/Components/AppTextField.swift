@@ -37,13 +37,11 @@ struct AppTextField: View {
                 SecureField(hint.localized, text: $text)
                     .padding(.horizontal, 8)
                     .padding(.vertical, borderWidth)
-                    .foregroundColor(.primary)
             }
             else {
                 TextField(hint.localized, text: $text)
                     .padding(.horizontal, 8)
                     .padding(.vertical, borderWidth)
-                    .foregroundColor(.primary)
             }
         }
         .frame(maxWidth: .infinity)
