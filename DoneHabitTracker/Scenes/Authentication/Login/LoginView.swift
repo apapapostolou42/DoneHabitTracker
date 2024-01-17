@@ -9,14 +9,12 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @Binding var isLoading: Bool
     @EnvironmentObject private var appModel: ApplicationModel
     
     @StateObject var viewModel: LoginViewModel
     
-    init(isLoading: Binding<Bool>) {
-        self._isLoading = isLoading
-        self._viewModel = StateObject(wrappedValue: LoginViewModel(isLoading: isLoading))
+    init(appModel: ApplicationModel) {
+        self._viewModel = StateObject(wrappedValue: LoginViewModel(appModel: appModel))
     }
     
     var body: some View {
@@ -71,7 +69,7 @@ struct LoginView: View {
                 HStack {
                     Spacer()
                     Button("login_signup") {
-                        appModel.routes.append(.signupRoute)
+                        viewModel.setRoute(.signupRoute);
                     }
                     .buttonStyle(.borderless)
                     Spacer()
@@ -82,12 +80,9 @@ struct LoginView: View {
         }
         .padding(16)
         .background(Color(UIColor.systemGroupedBackground))
-        .onAppear {
-            viewModel.setAppModel(appModel)
-        }
     }
 }
 
 #Preview {
-    LoginView(isLoading: .constant(false))
+    LoginView(appModel: ApplicationModel())
 }

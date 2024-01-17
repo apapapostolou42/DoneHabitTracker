@@ -22,7 +22,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct DoneHabitTrackerApp: App {
     
     @State private var showSplash: Bool = true
-    @State private var isLoading = false
+//    @State private var isLoading = false
     
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
@@ -37,15 +37,17 @@ struct DoneHabitTrackerApp: App {
                     NavigationStack(path: $appModel.routes) {
                         ZStack {
                             if appModel.user != nil {
-                                MainView(isLoading: $isLoading)
+                                MainView(isLoading: $appModel.isLoading)
+//                                MainView()
                             }
                             else {
-                                LoginView(isLoading: $isLoading)
+                                LoginView(appModel: appModel);
                             }
                         }
                         .navigationDestination(for: Route.self) { route in
                             switch route {
-                                case .signupRoute: RegistrationView(isLoading: $isLoading)
+                                case .signupRoute: RegistrationView(isLoading: $appModel.isLoading)
+//                                case .signupRoute: RegistrationView()
                             }
                         }
                     }
@@ -57,10 +59,10 @@ struct DoneHabitTrackerApp: App {
             .environmentObject(appModel)
             .applyColorSchemeIfNeeded(appModel.selectedTheme)
             .overlay {
-                isLoading ? Color.black.opacity(0.6).ignoresSafeArea() : nil
+                appModel.isLoading ? Color.black.opacity(0.6).ignoresSafeArea() : nil
             }
             .overlay {
-                isLoading ? 
+                appModel.isLoading ?
                     ProgressView().scaleEffect(2.0)
                         .progressViewStyle(CircularProgressViewStyle(tint: .white))
                 : nil

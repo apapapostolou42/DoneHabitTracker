@@ -48,6 +48,8 @@ class ApplicationModel: ObservableObject {
     var themes: [ThemeType] = [.system, .light, .dark]
     @Published var selectedTheme: String
     
+    @Published var isLoading = false;
+    
     init() {
         // Set Theme
         self.selectedTheme = UserDefaults.standard.string(forKey: UserDefaultsKey.theme.rawValue) ?? themes[0].rawValue

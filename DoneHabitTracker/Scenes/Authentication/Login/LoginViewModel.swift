@@ -15,15 +15,14 @@ class LoginViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var errorMessage: String = ""
     
-    var appModel: ApplicationModel?
-    var isLoading: Binding<Bool>
+    var appModel: ApplicationModel
     
     var isFormValid: Bool {
         !email.isEmptyOrWhiteSpace && !password.isEmptyOrWhiteSpace
     }
     
-    init(isLoading: Binding<Bool>) {
-        self.isLoading = isLoading
+    init(appModel: ApplicationModel) {
+        self.appModel = appModel
     }
 
     func setAppModel(_ appModel: ApplicationModel) {
@@ -31,18 +30,20 @@ class LoginViewModel: ObservableObject {
     }
     
     func login() async {
-        guard let appModel = appModel else { return }
-        
         do {
-            isLoading.wrappedValue = true
+            appModel.isLoading = true
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
             errorMessage = ""
             appModel.user = result.user
-            isLoading.wrappedValue = false
+            appModel.isLoading = false
         } catch {
             errorMessage = error.localizedDescription
-            isLoading.wrappedValue = false
+            appModel.isLoading = false
             appModel.user = nil
         }
+    }
+    
+    func setRoute(_ route: Route) {
+        appModel.routes.append(route)
     }
 }
