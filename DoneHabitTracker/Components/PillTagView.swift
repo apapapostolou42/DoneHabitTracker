@@ -87,15 +87,17 @@ struct PillTagsView: View {
 }
 
 #Preview {
-    PillTagsView(
-        pillTags: [
-            PillTag(text: "All"),
-            PillTag(text: "Fitness"),
-            PillTag(text: "Daily"),
-            PillTag(text: "Custom"),
-            PillTag(text: "Item 1"),
-            PillTag(text: "Item 2")
-        ],
-        selectedTag: .constant(PillTag(text: "All"))
+    let pills = [
+        PillTag(text: "All"),
+        PillTag(text: "Fitness"),
+        PillTag(text: "Daily"),
+        PillTag(text: "Custom"),
+        PillTag(text: "Item 1"),
+        PillTag(text: "Item 2")
+    ];
+
+    return PillTagsView(
+        pillTags: pills,
+        selectedTag: .constant(pills[0])
     )
 }
