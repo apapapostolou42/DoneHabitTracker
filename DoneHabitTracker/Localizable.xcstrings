@@ -201,6 +201,70 @@
         }
       }
     },
+    "profile_alert_delete_message" : {
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Αυτή η ενέργεια θα διαγράψει οριστικά όλα τα στοιχεία και το ιστορικό του λογαριασμού σας. Η διαδικασία αυτή είναι μη αναστρέψιμη. Επιθυμείτε να συνεχίσετε;"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This will permanently all your your data and account information. This action is irreversible. Do you want to continue?"
+          }
+        }
+      }
+    },
+    "profile_alert_delete_no" : {
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Όχι"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No"
+          }
+        }
+      }
+    },
+    "profile_alert_delete_title" : {
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "ΠΡΟΣΟΧΗ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CAUTION"
+          }
+        }
+      }
+    },
+    "profile_alert_delete_yes" : {
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ναι"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes"
+          }
+        }
+      }
+    },
     "profile_alert_logout_message" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -265,6 +329,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yes"
+          }
+        }
+      }
+    },
+    "profile_btn_delete" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διαγραφή Προφίλ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete Profile"
           }
         }
       }
@@ -359,14 +440,14 @@
       "localizations" : {
         "el" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Αίτημα Νέου Κωδικού"
+            "state" : "needs_review",
+            "value" : "Αίτημα Κωδικού"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Request New Password"
+            "value" : "Request Password"
           }
         }
       }

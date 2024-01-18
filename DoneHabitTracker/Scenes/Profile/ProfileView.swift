@@ -23,14 +23,14 @@ struct ProfileView: View {
                         .stroke(lineWidth: 3.0)
                         .background(Color.clear)
                         .foregroundColor(.primary)
-                        .frame(width: 58, height: 58)
+                        .frame(width: 48, height: 48)
                     
                     
                     Image("ti_profile")
                         .resizable()
                         .renderingMode(.template)
                         .foregroundColor(.primary)
-                        .frame(width: 44, height: 44)
+                        .frame(width: 35, height: 35)
                 }
                 .tint(.primary)
             }
@@ -39,7 +39,7 @@ struct ProfileView: View {
         var body: some View {
             HStack(alignment: .center, spacing: 32) {
                 Text("profile_profile")
-                    .font(.system(size: 58).bold())
+                    .font(.system(size: 48).bold())
                     .underline()
                 
                 ProfilePicPlaceholder()
@@ -55,7 +55,7 @@ struct ProfileView: View {
         @ObservedObject var viewModel: ProfileViewModel
         
         var body: some View {
-            VStack(alignment: .leading ,spacing: 32) {
+            VStack(alignment: .leading ,spacing: 16) {
                 HStack(spacing: 0) {
                     Text("profile_form_name")
                         .frame(width: 100, alignment: .leading)
@@ -83,6 +83,7 @@ struct ProfileView: View {
                         .cornerRadius(5)
                 }
                 .disabled(!viewModel.canUpdateUserInfo)
+                .padding(.bottom, 32)
                 
                 HStack(spacing: 0) {
                     Button(action: {
@@ -140,11 +141,12 @@ struct ProfileView: View {
     struct ProfileSettings: View {
         
         @EnvironmentObject private var appModel: ApplicationModel
+        @ObservedObject var viewModel: ProfileViewModel
         
         var body: some View {
             VStack(alignment: .leading) {
                 Text("profile_settings")
-                    .font(.system(size: 58).bold())
+                    .font(.system(size: 48).bold())
                     .underline()
                 
                 HStack(spacing: 0) {
@@ -160,18 +162,41 @@ struct ProfileView: View {
                     
                     AppDropDown(selectedItem: $appModel.selectedLanguage, options: appModel.languages.map{$0.rawValue})
                 }
+                .padding(.bottom, 32)
+                
+                Button(action: {
+                    viewModel.showProfileDeletionConfirmationAlert = true
+                }) {
+                    Text("profile_btn_delete")
+                        .padding(8)
+                        .foregroundColor(.white)
+                        .background(.red)
+                        .cornerRadius(5)
+                }
+                .alert(isPresented: $viewModel.showProfileDeletionConfirmationAlert) {
+                    Alert(
+                        title: Text("profile_alert_delete_title"),
+                        message: Text("profile_alert_delete_message"),
+                        primaryButton: .default(Text("profile_alert_delete_yes")) {
+                            Task {
+                                await viewModel.wipeUserAccount()
+                            }
+                        },
+                        secondaryButton: .default(Text("profile_alert_delete_no")) {}
+                    )
+                }
             }
         }
     }
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack(alignment: .leading, spacing: 48) {
+            VStack(alignment: .leading, spacing: 32) {
                 ProfileHeader()
                 
                 ProfileFields(viewModel: viewModel)
                 
-                ProfileSettings()
+                ProfileSettings(viewModel: viewModel)
             }
         }
         .padding(16)

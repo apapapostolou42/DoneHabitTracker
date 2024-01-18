@@ -29,6 +29,7 @@ class ProfileViewModel : ObservableObject {
     
     @Published var showLogoutConfirmationAlert: Bool = false
     @Published var showChangeEmailConfirmationAlert: Bool = false
+    @Published var showProfileDeletionConfirmationAlert: Bool = false
 
     
     init(appModel: ApplicationModel) {
@@ -76,7 +77,7 @@ class ProfileViewModel : ObservableObject {
         if let user = Auth.auth().currentUser {
             
             if let credential = appModel.credential {
-                // re authenticate the user
+                // changing emqil is sensitive and requires re authenticate the user
                 user.reauthenticate(with: credential) { result, error  in
                     
                     if let error = error {
@@ -121,7 +122,6 @@ class ProfileViewModel : ObservableObject {
     }
     
     func updateProfile() {
-        // update the email
         appModel.isLoading = true
         
         if let email = Auth.auth().currentUser?.email {
@@ -135,6 +135,24 @@ class ProfileViewModel : ObservableObject {
         }
         
         appModel.isLoading = false
+    }
+    
+    func wipeUserAccount() async {
+        if let user = Auth.auth().currentUser {
+            let db = Firestore.firestore()
+            
+            do {
+                try await db.collection("users").document(user.uid).delete()
+                print("Document successfully removed!")
+                
+                try await user.delete()
+                print("Account deleted")
+                
+                self.logout()
+            } catch {
+              print("Error removing document: \(error)")
+            }
+        }
     }
     
     private func fetchFirestoreUserInfo(userID: String) async -> FSUser? {
