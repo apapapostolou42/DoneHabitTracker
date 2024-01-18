@@ -73,10 +73,18 @@ struct ProfileView: View {
                         .disableAutocorrection(true)         // Disables auto-correction
                         .foregroundColor(viewModel.isEmailValid ? .primary : .red)
                 }
-                HStack(alignment: .top, spacing: 0) {
-                    Text("profile_form_password")
-                        .frame(width: 100, alignment: .leading)
-                    
+                Button(action: {
+                    viewModel.updateProfile()
+                }) {
+                    Text("profile_btn_update")
+                        .padding(8)
+                        .foregroundColor(.white)
+                        .background(viewModel.canUpdateUserInfo ? Color.btnEnabled : Color.btnDisabled)
+                        .cornerRadius(5)
+                }
+                .disabled(!viewModel.canUpdateUserInfo)
+                
+                HStack(spacing: 0) {
                     Button(action: {
                         viewModel.showChangeEmailConfirmationAlert = true
                     }) {
@@ -86,7 +94,6 @@ struct ProfileView: View {
                             .background(Color.btnEnabled)
                             .cornerRadius(5)
                     }
-                    .offset(CGSize(width: 0.0, height: -6.0))
                     .disabled(false)
                     .alert(isPresented: $viewModel.showChangeEmailConfirmationAlert) {
                         Alert(
@@ -100,20 +107,6 @@ struct ProfileView: View {
                             }
                         )
                     }
-                }
-                .padding(.bottom, 16)
-                
-                HStack(spacing: 64) {
-                    Button(action: {
-                        viewModel.updateProfile()
-                    }) {
-                        Text("profile_btn_update")
-                            .padding(8)
-                            .foregroundColor(.white)
-                            .background(viewModel.canUpdateUserInfo ? Color.btnEnabled : Color.btnDisabled)
-                            .cornerRadius(5)
-                    }
-                    .disabled(!viewModel.canUpdateUserInfo)
                     
                     Spacer()
                     

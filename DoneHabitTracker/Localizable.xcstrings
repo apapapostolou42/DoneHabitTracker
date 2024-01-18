@@ -337,57 +337,6 @@
         }
       }
     },
-    "profile_form_password" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Κωδικός"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Password"
-          }
-        }
-      }
-    },
-    "profile_form_password_new" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Νέος Κωδικός"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "New Password"
-          }
-        }
-      }
-    },
-    "profile_form_password_repeat" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Επαλήθευση Κωδικού"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Repeat Password"
-          }
-        }
-      }
-    },
     "profile_profile" : {
       "extractionState" : "manual",
       "localizations" : {
