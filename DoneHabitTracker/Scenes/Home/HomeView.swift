@@ -50,6 +50,15 @@ struct HomeView: View {
                     selectedTag: $selectedPill
                 )
                 
+                ChartsPie(data: [
+                    ChartsPie.ShapeModel(type: "Circle",    count: 12),
+                    ChartsPie.ShapeModel(type: "Square",    count: 10),
+                    ChartsPie.ShapeModel(type: "Triangle",  count: 21),
+                    ChartsPie.ShapeModel(type: "Rectangle", count: 15),
+                    ChartsPie.ShapeModel(type: "Hexagon",   count: 8)
+                ])
+                .frame(width: 250, height: 250)
+                
                 ChartsBar(dayData: viewModel.dayData, weekData:  viewModel.weekData)
                 
                 Spacer()
