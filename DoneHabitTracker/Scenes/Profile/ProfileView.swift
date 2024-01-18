@@ -18,31 +18,21 @@ struct ProfileView: View {
     struct ProfileHeader: View {
         struct ProfilePicPlaceholder: View {
             var body: some View {
-                
-                Button(action: { }) {
-                    ZStack {
-                        Circle()
-                            .stroke(lineWidth: 3.0)
-                            .background(Color.clear)
-                            .foregroundColor(.primary)
-                            .frame(width: 58, height: 58)
-                        
-                        
-                        Image("ti_profile")
-                            .resizable()
-                            .renderingMode(.template)
-                            .foregroundColor(.primary)
-                            .frame(width: 44, height: 44)
-                            
-                        
-                        Image("ti_plus")
-                            .renderingMode(.template)
-                            .foregroundColor(.primary)
-                            .offset(CGSize(width: 30.0, height: 22.0))
-                            .scaleEffect(1.2)
-                    }
-                    .tint(.primary)
+                ZStack {
+                    Circle()
+                        .stroke(lineWidth: 3.0)
+                        .background(Color.clear)
+                        .foregroundColor(.primary)
+                        .frame(width: 58, height: 58)
+                    
+                    
+                    Image("ti_profile")
+                        .resizable()
+                        .renderingMode(.template)
+                        .foregroundColor(.primary)
+                        .frame(width: 44, height: 44)
                 }
+                .tint(.primary)
             }
         }
         
