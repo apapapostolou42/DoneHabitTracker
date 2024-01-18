@@ -24,11 +24,12 @@ class ProfileViewModel : ObservableObject {
     @Published var user: FSUser?
     @Published var isEmailValid: Bool = true
     @Published var isUserNameValid: Bool = true
-    
-    @Published var showLogoutConfirmationAlert: Bool = false
-    @Published var showChangePasswordRequestAlert: Bool = false
         
     @Published var canUpdateUserInfo: Bool = false
+    
+    @Published var showLogoutConfirmationAlert: Bool = false
+    @Published var showChangeEmailConfirmationAlert: Bool = false
+
     
     init(appModel: ApplicationModel) {
         self.appModel = appModel
@@ -65,46 +66,6 @@ class ProfileViewModel : ObservableObject {
             return atLeastOneFilled && emailValidOrEmpty && userNameValidOrEmpty
         }
         .assign(to: &$canUpdateUserInfo)
-        
-        $showLogoutConfirmationAlert
-            .sink { [weak self] showAlert in
-                if showAlert {
-                    appModel.showConfirmAlert(
-                        title: "profile_alert_logout_title",
-                        message: "profile_alert_logout_message",
-                        primaryButtonText: "profile_alert_logout_no",
-                        secondaryButtonText: "profile_alert_logout_yes",
-                        primaryAction: {
-                            self?.showLogoutConfirmationAlert = false
-                        },
-                        secondaryAction: {
-                            self?.logout()
-                            self?.showLogoutConfirmationAlert = false
-                        }
-                    )
-                }
-            }
-            .store(in: &cancellables)
-        
-        $showChangePasswordRequestAlert
-            .sink { [weak self] showAlert in
-                if showAlert {
-                    appModel.showConfirmAlert(
-                        title: "profile_alert_changepassword_title",
-                        message: "profile_alert_changepassword_message",
-                        primaryButtonText: "profile_alert_changepassword_no",
-                        secondaryButtonText: "profile_alert_changepassword_yes",
-                        primaryAction: {
-                            self?.showChangePasswordRequestAlert = false
-                        },
-                        secondaryAction: {
-                            self?.requestPasswordReset()
-                            self?.showChangePasswordRequestAlert = false
-                        }
-                    )
-                }
-            }
-            .store(in: &cancellables)
     }
     
     func logout() {

@@ -71,7 +71,6 @@
 		D386479B2B56F8310016619C /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386479A2B56F8310016619C /* StatisticsView.swift */; };
 		D386479D2B56F83F0016619C /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386479C2B56F83F0016619C /* StatisticsViewModel.swift */; };
 		D3D22A272B57D5E5009BE6E9 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D22A262B57D5E5009BE6E9 /* View+Extensions.swift */; };
-		D3D22A292B5945BE009BE6E9 /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D22A282B5945BE009BE6E9 /* AlertItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,7 +112,6 @@
 		D386479A2B56F8310016619C /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		D386479C2B56F83F0016619C /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
 		D3D22A262B57D5E5009BE6E9 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
-		D3D22A282B5945BE009BE6E9 /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,7 +292,6 @@
 				D386477F2B568BFF0016619C /* ChartsDougnutProgress.swift */,
 				D38647852B56C4AE0016619C /* AppTextField.swift */,
 				D38647872B56D45F0016619C /* AppDropDown.swift */,
-				D3D22A282B5945BE009BE6E9 /* AlertItem.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -469,7 +466,6 @@
 				D38647882B56D45F0016619C /* AppDropDown.swift in Sources */,
 				D38647692B50D50D0016619C /* ActiveHabit.swift in Sources */,
 				D386478D2B56E2650016619C /* HomeViewModel.swift in Sources */,
-				D3D22A292B5945BE009BE6E9 /* AlertItem.swift in Sources */,
 				D386471B2B5019D00016619C /* LoginViewModel.swift in Sources */,
 				D38647162B5013C50016619C /* SplashView.swift in Sources */,
 				D38647802B568BFF0016619C /* ChartsDougnutProgress.swift in Sources */,

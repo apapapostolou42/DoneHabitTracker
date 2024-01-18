@@ -14,8 +14,8 @@
             filePath = "DoneHabitTracker/Scenes/Profile/ProfileViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "updateProfile()"
             landmarkType = "7">
             <Locations>

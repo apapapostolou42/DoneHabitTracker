@@ -42,6 +42,13 @@ struct DoneHabitTrackerApp: App {
                                 LoginView(appModel: appModel);
                             }
                         }
+                        .alert(isPresented: $appModel.isNetworkDown) {
+                            Alert(
+                                title: Text("Network Error"),
+                                message: Text("Lost Internet Connection, try again later"),
+                                dismissButton: .default(Text("OK")) {}
+                            )
+                        }
                         .navigationDestination(for: Route.self) { route in
                             switch route {
                                 case .signupRoute: RegistrationView(appModel: appModel)
@@ -66,20 +73,6 @@ struct DoneHabitTrackerApp: App {
             }
             .applyColorSchemeIfNeeded(appModel.selectedTheme)
             .environment(\.locale, .init(identifier: appModel.selectedLanguage))
-            
-            .alert(item: $appModel.currentAlert) { alertItem in
-                // Check if secondaryButton is defined
-                if alertItem.secondaryButtonText != nil {
-                    return Alert(title: Text(alertItem.title),
-                                 message: Text(alertItem.message),
-                                 primaryButton: .default(Text(alertItem.primaryButtonText), action: alertItem.primaryAction),
-                                 secondaryButton: .cancel(Text(alertItem.secondaryButtonText!), action: alertItem.secondaryAction))
-                } else {
-                    return Alert(title: Text(alertItem.title),
-                                 message: Text(alertItem.message),
-                                 dismissButton: .default(Text(alertItem.primaryButtonText), action: alertItem.primaryAction))
-                }
-            }
         }
     }
 }

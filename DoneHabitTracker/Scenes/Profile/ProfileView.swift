@@ -78,7 +78,7 @@ struct ProfileView: View {
                         .frame(width: 100, alignment: .leading)
                     
                     Button(action: {
-                        viewModel.showChangePasswordRequestAlert = true
+                        viewModel.showChangeEmailConfirmationAlert = true
                     }) {
                         Text("profile_request_password")
                             .padding(8)
@@ -88,6 +88,18 @@ struct ProfileView: View {
                     }
                     .offset(CGSize(width: 0.0, height: -6.0))
                     .disabled(false)
+                    .alert(isPresented: $viewModel.showChangeEmailConfirmationAlert) {
+                        Alert(
+                            title: Text("profile_alert_changepassword_title"),
+                            message: Text("profile_alert_changepassword_message"),
+                            primaryButton: .default(Text("profile_alert_changepassword_yes")) {
+                                viewModel.requestPasswordReset()
+                            },
+                            secondaryButton: .default(Text("profile_alert_changepassword_no")) {
+                                
+                            }
+                        )
+                    }
                 }
                 .padding(.bottom, 16)
                 
@@ -115,6 +127,18 @@ struct ProfileView: View {
                             .cornerRadius(5)
                     }
                     .disabled(false)
+                    .alert(isPresented: $viewModel.showLogoutConfirmationAlert) {
+                        Alert(
+                            title: Text("profile_alert_logout_title"),
+                            message: Text("profile_alert_logout_message"),
+                            primaryButton: .default(Text("profile_alert_logout_yes")) {
+                                viewModel.logout()
+                            },
+                            secondaryButton: .default(Text("profile_alert_logout_no")) {
+                                
+                            }
+                        )
+                    }
                 }
             }
         }
@@ -166,4 +190,5 @@ struct ProfileView: View {
 
 #Preview {
     ProfileView(appModel: ApplicationModel())
+        .environmentObject(ApplicationModel())
 }
