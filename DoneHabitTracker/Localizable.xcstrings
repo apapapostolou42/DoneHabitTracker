@@ -124,9 +124,6 @@
     "Lost Internet Connection, try again later" : {
 
     },
-    "NAME: %@" : {
-
-    },
     "Network Error" : {
 
     },
@@ -135,6 +132,74 @@
     },
     "OK" : {
 
+    },
+    "profile_alert_logout_message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Θέλετε να αποσυνδεθείτε από την εφαρμογή"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to logout from the application?"
+          }
+        }
+      }
+    },
+    "profile_alert_logout_no" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Όχι"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No"
+          }
+        }
+      }
+    },
+    "profile_alert_logout_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αποσύνδεση Χρήστη"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User Logout"
+          }
+        }
+      }
+    },
+    "profile_alert_logout_yes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ναι"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes"
+          }
+        }
+      }
     },
     "profile_btn_logout" : {
       "extractionState" : "manual",

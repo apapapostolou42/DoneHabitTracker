@@ -67,20 +67,6 @@ struct HomeView: View {
                 
                 
                 Spacer()
-                
-                
-                Text(Auth.auth().currentUser?.uid ?? "No UID")
-                    .padding(.leading)
-                    .font(.caption)
-                
-                Text("NAME: \(viewModel.user?.username ?? "Undefined")")
-                    .padding(.leading)
-                
-                
-                Button("profile_btn_logout".localized) {
-                    try? Auth.auth().signOut()
-                    
-                }
             }
         }
         .padding(32)

@@ -3,4 +3,102 @@
    uuid = "7E6106C1-0044-4AE4-B3B9-01267BA13DE5"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "23008C11-DAC5-4C4F-9431-1210191A463F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DoneHabitTracker/Scenes/Profile/ProfileViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "updateProfile()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "23008C11-DAC5-4C4F-9431-1210191A463F - 65a9d29936ab8756"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DoneHabitTracker.ProfileViewModel.updateProfile() -&gt; ()"
+                  moduleName = "DoneHabitTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ianyfantakis/Developer/xcode/ios/DoneHabitTracker/DoneHabitTracker/Scenes/Profile/ProfileViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "23008C11-DAC5-4C4F-9431-1210191A463F - 65a9d29936ab8756"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DoneHabitTracker.ProfileViewModel.updateProfile() -&gt; ()"
+                  moduleName = "DoneHabitTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ianyfantakis/Developer/xcode/ios/DoneHabitTracker/DoneHabitTracker/Scenes/Profile/ProfileViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A9E0A44A-2E09-4864-9947-00D3EA6890CF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DoneHabitTracker/Scenes/Profile/ProfileViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "changeEmailTo(newEmail:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A9E0A44A-2E09-4864-9947-00D3EA6890CF - 2b84279c2046bdca"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DoneHabitTracker.ProfileViewModel.changeEmailTo(newEmail: Swift.String) -&gt; ()"
+                  moduleName = "DoneHabitTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ianyfantakis/Developer/xcode/ios/DoneHabitTracker/DoneHabitTracker/Scenes/Profile/ProfileViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "A9E0A44A-2E09-4864-9947-00D3EA6890CF - 113fa373d7dfbabc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;) -&gt; () in DoneHabitTracker.ProfileViewModel.changeEmailTo(newEmail: Swift.String) -&gt; ()"
+                  moduleName = "DoneHabitTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ianyfantakis/Developer/xcode/ios/DoneHabitTracker/DoneHabitTracker/Scenes/Profile/ProfileViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

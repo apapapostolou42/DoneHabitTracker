@@ -70,20 +70,21 @@ struct ProfileView: View {
                     Text("profile_form_name")
                         .frame(width: 100, alignment: .leading)
                     
-                    AppTextField("profile_form_name_hint", text: .constant(""))
+                    AppTextField("profile_form_name_hint", text: $viewModel.userName)
 
                 }
                 HStack(alignment: .center, spacing: 0) {
                     Text("profile_form_email".localized)
                         .frame(width: 100, alignment: .leading)
-                    AppTextField("profile_form_email_hint", text: .constant(""))
+                    AppTextField("profile_form_email_hint", text: $viewModel.userEmail)
+                        .foregroundColor(viewModel.isEmailValid ? .primary : .red)
                 }
                 HStack(alignment: .top, spacing: 0) {
                     Text("profile_form_password")
                         .frame(width: 100, alignment: .leading)
                     
                     Button(action: {
-                       
+                        viewModel.requestPasswordReset()
                     }) {
                         Text("profile_request_password")
                             .padding(8)
@@ -98,7 +99,7 @@ struct ProfileView: View {
                 
                 HStack(spacing: 64) {
                     Button(action: {
-                        
+                        viewModel.updateProfile()
                     }) {
                         Text("profile_btn_update")
                             .padding(8)
@@ -111,7 +112,7 @@ struct ProfileView: View {
                     Spacer()
                     
                     Button(action: {
-                        viewModel.logout()
+                        viewModel.showLogoutConfirmationAlert = true
                     }) {
                         Text("profile_btn_logout")
                             .padding(8)
@@ -163,6 +164,22 @@ struct ProfileView: View {
             }
         }
         .padding(16)
+        .onAppear {
+            viewModel.refreshUserData()
+        }
+        
+        .alert(isPresented: $viewModel.showLogoutConfirmationAlert) {
+            Alert(
+                title: Text("profile_alert_logout_title"),
+                message: Text("profile_alert_logout_message"),
+                primaryButton: .default(Text("profile_alert_logout_yes")) {
+                    viewModel.logout()
+                },
+                secondaryButton: .default(Text("profile_alert_logout_no")) {
+                    
+                }
+            )
+        }
     }
 }
 

@@ -12,7 +12,6 @@ import FirebaseFirestore
 @MainActor
 class HomeViewModel : ObservableObject {
     var appModel: ApplicationModel
-    @Published var user: FSUser?
     
     @Published var dayData: [ChartsBar.Item] = [
         .init(habitName: "Ποτήρια Νερό", value: 23),
@@ -26,39 +25,5 @@ class HomeViewModel : ObservableObject {
     
     init(appModel: ApplicationModel) {
         self.appModel = appModel
-    }
-    
-    func loadUserData() {
-        if let uid = Auth.auth().currentUser?.uid {
-            Task {
-                appModel.isLoading = true
-                self.user = await fetchFirestoreUserInfo(userID: uid)
-                appModel.isLoading = false
-            }
-        }
-    }
-    
-    func fetchFirestoreUserInfo(userID: String) async -> FSUser? {
-        let db = Firestore.firestore()
-
-        let documentRef = db.collection("users").document(userID)
-
-        do {
-            let document = try await documentRef.getDocument()
-            guard let data = document.data() else {
-                print("Document does not exist")
-                return nil
-            }
-
-            // Convert the Firestore document data to JSON
-            let jsonData = try JSONSerialization.data(withJSONObject: data, options: [])
-            // Decode the JSON data to an FSUser object
-            let fsUser = try JSONDecoder().decode(FSUser.self, from: jsonData)
-            
-            return fsUser
-        } catch {
-            print("Error fetching document: \(error)")
-            return nil
-        }
     }
 }
