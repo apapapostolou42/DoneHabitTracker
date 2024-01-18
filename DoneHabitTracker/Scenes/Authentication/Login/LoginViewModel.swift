@@ -43,6 +43,7 @@ class LoginViewModel: ObservableObject {
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
             errorMessage = ""
             appModel.user = result.user
+            appModel.credential = EmailAuthProvider.credential(withEmail: email, password: password)
             appModel.isLoading = false
         } catch {
             errorMessage = error.localizedDescription

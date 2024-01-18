@@ -41,8 +41,24 @@ class ProfileViewModel : ObservableObject {
     }
     
     func changeEmailTo(newEmail: String) {
-        Auth.auth().currentUser?.sendEmailVerification(beforeUpdatingEmail: newEmail) { error in
-            // ...
+        if let user = Auth.auth().currentUser {
+            
+            if let credential = appModel.credential {
+                // re authenticate the user
+                user.reauthenticate(with: credential) { result, error  in
+                    
+                    if let error = error {
+                        // An error happened.
+                        print("ERROR 1 \(error.localizedDescription)")
+                    } else {
+                        // User re-authenticated.
+                        Auth.auth().currentUser?.sendEmailVerification(beforeUpdatingEmail: newEmail) { error in
+                            // email updated
+                            print("ERROR 2 \(error?.localizedDescription ?? "")")
+                        }
+                    }
+                }
+            }
         }
     }
     

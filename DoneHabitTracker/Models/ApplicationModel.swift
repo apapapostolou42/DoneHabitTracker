@@ -50,6 +50,8 @@ class ApplicationModel: ObservableObject {
         routes = [route]
     }
     
+    var credential: AuthCredential? = nil
+    
     // application themes
     var themes: [ThemeType] = [.system, .light, .dark]
     @Published var selectedTheme: String

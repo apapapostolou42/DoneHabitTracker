@@ -65,6 +65,7 @@ class RegistrationViewModel: ObservableObject {
             errorMessage = ""
             appModel.user = result.user
             await updateFirestoreUserInfo(user: result.user)
+            appModel.credential = EmailAuthProvider.credential(withEmail: email, password: password)
             appModel.isLoading = false
             appModel.routes.removeLast()
         }
