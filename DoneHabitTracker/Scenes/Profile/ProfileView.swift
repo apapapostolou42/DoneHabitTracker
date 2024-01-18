@@ -69,14 +69,18 @@ struct ProfileView: View {
                 HStack(spacing: 0) {
                     Text("profile_form_name")
                         .frame(width: 100, alignment: .leading)
-                    
-                    AppTextField("profile_form_name_hint", text: $viewModel.userName)
+                    AppTextField(viewModel.usernNameHint, text: $viewModel.userName)
+                        .textInputAutocapitalization(.never) // Disables auto-capitalization
+                        .disableAutocorrection(true)         // Disables auto-correction
+                        .foregroundColor(viewModel.isUserNameValid ? .primary : .red)
 
                 }
                 HStack(alignment: .center, spacing: 0) {
                     Text("profile_form_email".localized)
                         .frame(width: 100, alignment: .leading)
-                    AppTextField("profile_form_email_hint", text: $viewModel.userEmail)
+                    AppTextField(viewModel.emailHint, text: $viewModel.userEmail)
+                        .textInputAutocapitalization(.never) // Disables auto-capitalization
+                        .disableAutocorrection(true)         // Disables auto-correction
                         .foregroundColor(viewModel.isEmailValid ? .primary : .red)
                 }
                 HStack(alignment: .top, spacing: 0) {
@@ -84,7 +88,7 @@ struct ProfileView: View {
                         .frame(width: 100, alignment: .leading)
                     
                     Button(action: {
-                        viewModel.requestPasswordReset()
+                        viewModel.showChangePasswordRequestAlert = true
                     }) {
                         Text("profile_request_password")
                             .padding(8)
@@ -104,10 +108,10 @@ struct ProfileView: View {
                         Text("profile_btn_update")
                             .padding(8)
                             .foregroundColor(.white)
-                            .background(Color.btnEnabled)
+                            .background(viewModel.canUpdateUserInfo ? Color.btnEnabled : Color.btnDisabled)
                             .cornerRadius(5)
                     }
-                    .disabled(false)
+                    .disabled(!viewModel.canUpdateUserInfo)
                     
                     Spacer()
                     
@@ -166,19 +170,6 @@ struct ProfileView: View {
         .padding(16)
         .onAppear {
             viewModel.refreshUserData()
-        }
-        
-        .alert(isPresented: $viewModel.showLogoutConfirmationAlert) {
-            Alert(
-                title: Text("profile_alert_logout_title"),
-                message: Text("profile_alert_logout_message"),
-                primaryButton: .default(Text("profile_alert_logout_yes")) {
-                    viewModel.logout()
-                },
-                secondaryButton: .default(Text("profile_alert_logout_no")) {
-                    
-                }
-            )
         }
     }
 }

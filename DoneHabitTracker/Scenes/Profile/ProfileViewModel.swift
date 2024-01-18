@@ -13,13 +13,22 @@ import Combine
 @MainActor
 class ProfileViewModel : ObservableObject {
     var appModel: ApplicationModel
+    private var cancellables = Set<AnyCancellable>()
     
     @Published var userEmail: String = ""
+    @Published var emailHint: String = ""
+    
     @Published var userName: String = ""
+    @Published var usernNameHint: String = ""
+    
     @Published var user: FSUser?
     @Published var isEmailValid: Bool = true
+    @Published var isUserNameValid: Bool = true
     
     @Published var showLogoutConfirmationAlert: Bool = false
+    @Published var showChangePasswordRequestAlert: Bool = false
+        
+    @Published var canUpdateUserInfo: Bool = false
     
     init(appModel: ApplicationModel) {
         self.appModel = appModel
@@ -27,13 +36,75 @@ class ProfileViewModel : ObservableObject {
         $user
             .receive(on: RunLoop.main)
             .compactMap { $0?.username }
-            .assign(to: &$userName)
+            .assign(to: &$usernNameHint)
         
         $userEmail
             .receive(on: RunLoop.main)
             .debounce(for: 0.1, scheduler: RunLoop.main)
-            .compactMap { $0.isValidEmailAddress }
+            .map { [weak self] email in
+                return email.isValidEmailAddress && email != self?.emailHint
+            }
             .assign(to: &$isEmailValid)
+        
+        $userName
+            .receive(on: RunLoop.main)
+            .debounce(for: 0.1, scheduler: RunLoop.main)
+            .map { [weak self] userName in
+                return !userName.trim().isEmpty && userName != self?.usernNameHint
+            }
+            .assign(to: &$isUserNameValid)
+        
+        
+        Publishers.CombineLatest4($userEmail, $userName, $isEmailValid, $isUserNameValid)
+        .map { userEmail, userName, isEmailValid, isUserNameValid in
+            let atLeastOneFilled = isEmailValid || isUserNameValid
+            
+            let emailValidOrEmpty = isEmailValid || userEmail.trim().isEmpty
+            let userNameValidOrEmpty = isUserNameValid || userName.trim().isEmpty
+            
+            return atLeastOneFilled && emailValidOrEmpty && userNameValidOrEmpty
+        }
+        .assign(to: &$canUpdateUserInfo)
+        
+        $showLogoutConfirmationAlert
+            .sink { [weak self] showAlert in
+                if showAlert {
+                    appModel.showConfirmAlert(
+                        title: "profile_alert_logout_title",
+                        message: "profile_alert_logout_message",
+                        primaryButtonText: "profile_alert_logout_no",
+                        secondaryButtonText: "profile_alert_logout_yes",
+                        primaryAction: {
+                            self?.showLogoutConfirmationAlert = false
+                        },
+                        secondaryAction: {
+                            self?.logout()
+                            self?.showLogoutConfirmationAlert = false
+                        }
+                    )
+                }
+            }
+            .store(in: &cancellables)
+        
+        $showChangePasswordRequestAlert
+            .sink { [weak self] showAlert in
+                if showAlert {
+                    appModel.showConfirmAlert(
+                        title: "profile_alert_changepassword_title",
+                        message: "profile_alert_changepassword_message",
+                        primaryButtonText: "profile_alert_changepassword_no",
+                        secondaryButtonText: "profile_alert_changepassword_yes",
+                        primaryAction: {
+                            self?.showChangePasswordRequestAlert = false
+                        },
+                        secondaryAction: {
+                            self?.requestPasswordReset()
+                            self?.showChangePasswordRequestAlert = false
+                        }
+                    )
+                }
+            }
+            .store(in: &cancellables)
     }
     
     func logout() {
@@ -55,6 +126,10 @@ class ProfileViewModel : ObservableObject {
                         Auth.auth().currentUser?.sendEmailVerification(beforeUpdatingEmail: newEmail) { error in
                             // email updated
                             print("ERROR 2 \(error?.localizedDescription ?? "")")
+                            
+                            if error == nil {
+                                
+                            }
                         }
                     }
                 }
@@ -65,7 +140,9 @@ class ProfileViewModel : ObservableObject {
     func requestPasswordReset() {
         if let email = Auth.auth().currentUser?.email {
             Auth.auth().sendPasswordReset(withEmail: email) { error in
-                // ...
+                if error == nil {
+                    
+                }
             }
         }
     }
@@ -75,8 +152,8 @@ class ProfileViewModel : ObservableObject {
             Task {
                 appModel.isLoading = true
                 self.user = await fetchFirestoreUserInfo(userID: uid)
-                self.userEmail = Auth.auth().currentUser?.email ?? ""
-                
+                self.usernNameHint = user?.username ?? ""
+                self.emailHint = Auth.auth().currentUser?.email ?? ""
                 appModel.isLoading = false
             }
         }
@@ -135,6 +212,9 @@ class ProfileViewModel : ObservableObject {
                         "username": userName
                     ])
                     print("Document successfully updated")
+                    
+                    self.usernNameHint = userName
+                    self.userName = ""
                 } catch {
                     print("Error updating document: \(error)")
                 }

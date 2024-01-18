@@ -121,17 +121,76 @@
         }
       }
     },
-    "Lost Internet Connection, try again later" : {
-
-    },
-    "Network Error" : {
-
-    },
     "New Habit Tab" : {
 
     },
-    "OK" : {
-
+    "profile_alert_changepassword_message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Θα σταλεί ένα μήνυμα στο email σας για δημιουργία νέου Κωδικού. Επιθυμείτε συνέχεια;"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This will send a message to your mailbox for password reset.  Continue?"
+          }
+        }
+      }
+    },
+    "profile_alert_changepassword_no" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Όχι"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No"
+          }
+        }
+      }
+    },
+    "profile_alert_changepassword_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αίτημα Αλλαγής Κωδικού"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Request Password Change"
+          }
+        }
+      }
+    },
+    "profile_alert_changepassword_yes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ναι"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes"
+          }
+        }
+      }
     },
     "profile_alert_logout_message" : {
       "extractionState" : "manual",
@@ -252,23 +311,6 @@
         }
       }
     },
-    "profile_form_email_hint" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "δώστε email"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "enter email"
-          }
-        }
-      }
-    },
     "profile_form_name" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -282,23 +324,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Name"
-          }
-        }
-      }
-    },
-    "profile_form_name_hint" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "δώστε όνομα"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "enter name"
           }
         }
       }

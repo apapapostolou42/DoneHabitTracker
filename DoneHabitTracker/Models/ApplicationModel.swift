@@ -9,6 +9,7 @@ import Foundation
 import FirebaseAuth
 import Network
 import Combine
+import SwiftUI
 
 enum Route: Hashable {
     case signupRoute
@@ -58,11 +59,13 @@ class ApplicationModel: ObservableObject {
     
     
     // application localization
-    var languages: [AppLanguage] = [.en, .el]
+    var languages: [AppLanguage] = [.el, .en]
     @Published var selectedLanguage: String
     
     
     @Published var isLoading = false;
+    
+    @Published var currentAlert: AlertItem?
     
     init() {
         // Set Theme
@@ -78,6 +81,14 @@ class ApplicationModel: ObservableObject {
         $selectedLanguage
             .sink { newLanguage in
                 UserDefaults.standard.set(newLanguage, forKey: UserDefaultsKey.lang.rawValue)
+            }
+            .store(in: &cancellables)
+        
+        $isNetworkDown
+            .sink { [weak self] isNetowkrDown in
+                if isNetowkrDown {
+                    self?.showSimpleAlert(title: "NetworkError", message: "Lost Internet Connection, try again later")
+                }
             }
             .store(in: &cancellables)
         
@@ -112,5 +123,17 @@ class ApplicationModel: ObservableObject {
                 self.user = nil
             }
         }
+    }
+    
+    // Confirmation alert with both buttons
+    func showConfirmAlert(title: String, message: String, primaryButtonText: String = "OK", secondaryButtonText: String = "Cancel", primaryAction: (() -> Void)? = nil, secondaryAction: (() -> Void)? = nil) {
+        let alert = AlertItem(title: title.localized, message: message.localized, primaryButtonText: primaryButtonText.localized, primaryAction: primaryAction, secondaryButtonText: secondaryButtonText.localized, secondaryAction: secondaryAction)
+        currentAlert = alert
+    }
+
+    // Simple alert with only primary button
+    func showSimpleAlert(title: String, message: String, primaryButtonText: String = "OK", primaryAction: (() -> Void)? = nil) {
+        let alert = AlertItem(title: title.localized, message: message.localized, primaryButtonText: primaryButtonText.localized, primaryAction: primaryAction)
+        currentAlert = alert
     }
 }
