@@ -44,8 +44,8 @@ struct DoneHabitTrackerApp: App {
                         }
                         .alert(isPresented: $appModel.isNetworkDown) {
                             Alert(
-                                title: Text("Network Error"),
-                                message: Text("Lost Internet Connection, try again later"),
+                                title: Text("network_error_alert_title"),
+                                message: Text("network_error_alert_message"),
                                 dismissButton: .default(Text("OK")) {}
                             )
                         }
@@ -73,6 +73,7 @@ struct DoneHabitTrackerApp: App {
             }
             .applyColorSchemeIfNeeded(appModel.selectedTheme)
             .environment(\.locale, .init(identifier: appModel.selectedLanguage))
+
         }
     }
 }

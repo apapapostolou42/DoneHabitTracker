@@ -10,12 +10,6 @@
     "%lld" : {
 
     },
-    "A" : {
-
-    },
-    "B" : {
-
-    },
     "Count" : {
 
     },
@@ -127,11 +121,37 @@
         }
       }
     },
-    "Lost Internet Connection, try again later" : {
-
+    "network_error_alert_message" : {
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Χάθηκε η σύνδεσή σας στο Internet, προσπαθήξστε ξανά αργότερα"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lost Internet Connection, try again later"
+          }
+        }
+      }
     },
-    "Network Error" : {
-
+    "network_error_alert_title" : {
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Σφάλμα Δικτύου"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Network Error"
+          }
+        }
+      }
     },
     "New Habit Tab" : {
 
