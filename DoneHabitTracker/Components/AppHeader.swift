@@ -9,14 +9,15 @@ import SwiftUI
 
 struct AppHeader: View {
     
-    let title: String
+    @EnvironmentObject private var appModel: ApplicationModel
+    private let title: String
     
     init(_ title: String) {
         self.title = title
     }
     
     var body: some View {
-        Text("\(title.localized)")
+        Text(title.localizedString(locale: Locale(identifier: appModel.selectedLanguage)))
             .font(.system(size: 44).bold())
             .foregroundColor(.primary)
             .underline()

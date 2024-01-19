@@ -27,4 +27,10 @@ extension String {
     var localized: String {
         NSLocalizedString(self, comment: "")
     }
+    
+    func localizedString(locale: Locale) -> String {
+        let path = Bundle.main.path(forResource: locale.identifier, ofType: "lproj")
+        let bundle = path.flatMap { Bundle(path: $0) } ?? .main
+        return NSLocalizedString(self, bundle: bundle, comment: "")
+    }
 }
