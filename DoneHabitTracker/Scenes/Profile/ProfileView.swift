@@ -24,26 +24,10 @@ struct ProfileView: View {
             VStack(alignment: .leading ,spacing: 16) {
                 HStack(alignment: .center, spacing: 32) {
                     // Profile Title
-                    Text("profile_profile")
-                        .font(.system(size: 44).bold())
-                        .underline()
+                    AppHeader("profile_profile")
                     
                     // Profile Image
-                    ZStack {
-                        Circle()
-                            .stroke(lineWidth: 3.0)
-                            .background(Color.clear)
-                            .foregroundColor(.primary)
-                            .frame(width: 44, height: 44)
-                        
-                        
-                        Image("ti_profile")
-                            .resizable()
-                            .renderingMode(.template)
-                            .foregroundColor(.primary)
-                            .frame(width: 32, height: 32)
-                    }
-                    .tint(.primary)
+                    ProfileImage()
                     
                     Spacer()
                 }
@@ -86,9 +70,7 @@ struct ProfileView: View {
         
         var body: some View {
             VStack(alignment: .leading) {
-                Text("profile_settings")
-                    .font(.system(size: 44).bold())
-                    .underline()
+                AppHeader("profile_settings")
                 
                 HStack(spacing: 0) {
                     Text("profile_settings_mode")

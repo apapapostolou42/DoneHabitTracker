@@ -72,6 +72,12 @@
 		D386479D2B56F83F0016619C /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386479C2B56F83F0016619C /* StatisticsViewModel.swift */; };
 		D3D22A272B57D5E5009BE6E9 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D22A262B57D5E5009BE6E9 /* View+Extensions.swift */; };
 		D3D22A2B2B5A8825009BE6E9 /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D22A2A2B5A8825009BE6E9 /* AppTabView.swift */; };
+		D3D22A2D2B5AA541009BE6E9 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D22A2C2B5AA541009BE6E9 /* ProfileImage.swift */; };
+		D3D22A2F2B5AA5BA009BE6E9 /* AppHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D22A2E2B5AA5BA009BE6E9 /* AppHeader.swift */; };
+		D3D22A322B5AA70A009BE6E9 /* DemoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D22A312B5AA70A009BE6E9 /* DemoScreen.swift */; };
+		D3D22A342B5AB8E9009BE6E9 /* DemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D22A332B5AB8E9009BE6E9 /* DemoViewModel.swift */; };
+		D3D22A362B5ABAEF009BE6E9 /* AppCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D22A352B5ABAEF009BE6E9 /* AppCheckbox.swift */; };
+		D3D22A382B5ABCB9009BE6E9 /* EditableHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D22A372B5ABCB9009BE6E9 /* EditableHabit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +120,12 @@
 		D386479C2B56F83F0016619C /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
 		D3D22A262B57D5E5009BE6E9 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		D3D22A2A2B5A8825009BE6E9 /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
+		D3D22A2C2B5AA541009BE6E9 /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
+		D3D22A2E2B5AA5BA009BE6E9 /* AppHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHeader.swift; sourceTree = "<group>"; };
+		D3D22A312B5AA70A009BE6E9 /* DemoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScreen.swift; sourceTree = "<group>"; };
+		D3D22A332B5AB8E9009BE6E9 /* DemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewModel.swift; sourceTree = "<group>"; };
+		D3D22A352B5ABAEF009BE6E9 /* AppCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCheckbox.swift; sourceTree = "<group>"; };
+		D3D22A372B5ABCB9009BE6E9 /* EditableHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableHabit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +208,7 @@
 		D38647142B5013660016619C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				D3D22A302B5AA6E2009BE6E9 /* DemoScreen */,
 				D38647202B501A280016619C /* Splash */,
 				D38647192B5019990016619C /* Authentication */,
 				D38647892B56E2480016619C /* Home */,
@@ -295,6 +308,10 @@
 				D38647852B56C4AE0016619C /* AppTextField.swift */,
 				D38647872B56D45F0016619C /* AppDropDown.swift */,
 				D3D22A2A2B5A8825009BE6E9 /* AppTabView.swift */,
+				D3D22A2C2B5AA541009BE6E9 /* ProfileImage.swift */,
+				D3D22A2E2B5AA5BA009BE6E9 /* AppHeader.swift */,
+				D3D22A352B5ABAEF009BE6E9 /* AppCheckbox.swift */,
+				D3D22A372B5ABCB9009BE6E9 /* EditableHabit.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -333,6 +350,15 @@
 				D386479C2B56F83F0016619C /* StatisticsViewModel.swift */,
 			);
 			path = Statistics;
+			sourceTree = "<group>";
+		};
+		D3D22A302B5AA6E2009BE6E9 /* DemoScreen */ = {
+			isa = PBXGroup;
+			children = (
+				D3D22A312B5AA70A009BE6E9 /* DemoScreen.swift */,
+				D3D22A332B5AB8E9009BE6E9 /* DemoViewModel.swift */,
+			);
+			path = DemoScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -445,7 +471,10 @@
 				D33F20D32B2875B600C2353E /* DoneHabitTrackerApp.swift in Sources */,
 				D38647962B56F6F70016619C /* NewHabitView.swift in Sources */,
 				D38647982B56F7040016619C /* NewHabitViewModel.swift in Sources */,
+				D3D22A362B5ABAEF009BE6E9 /* AppCheckbox.swift in Sources */,
+				D3D22A342B5AB8E9009BE6E9 /* DemoViewModel.swift in Sources */,
 				D386478B2B56E2580016619C /* HomeView.swift in Sources */,
+				D3D22A382B5ABCB9009BE6E9 /* EditableHabit.swift in Sources */,
 				D386477A2B5590810016619C /* ChartsBar.swift in Sources */,
 				D386479B2B56F8310016619C /* StatisticsView.swift in Sources */,
 				D38647642B50B3FF0016619C /* ProfileView.swift in Sources */,
@@ -463,10 +492,13 @@
 				D386476F2B5153420016619C /* ProfileViewModel.swift in Sources */,
 				D386476D2B50D6020016619C /* FSUser.swift in Sources */,
 				D38647912B56F5D00016619C /* HabitsView.swift in Sources */,
+				D3D22A2D2B5AA541009BE6E9 /* ProfileImage.swift in Sources */,
+				D3D22A322B5AA70A009BE6E9 /* DemoScreen.swift in Sources */,
 				D386475D2B502B4B0016619C /* String+Extensions.swift in Sources */,
 				D386476B2B50D5830016619C /* CustomHabit.swift in Sources */,
 				D38647932B56F5E10016619C /* HabitsViewModel.swift in Sources */,
 				D386471D2B5019E80016619C /* RegistrationView.swift in Sources */,
+				D3D22A2F2B5AA5BA009BE6E9 /* AppHeader.swift in Sources */,
 				D38647882B56D45F0016619C /* AppDropDown.swift in Sources */,
 				D38647692B50D50D0016619C /* ActiveHabit.swift in Sources */,
 				D386478D2B56E2650016619C /* HomeViewModel.swift in Sources */,

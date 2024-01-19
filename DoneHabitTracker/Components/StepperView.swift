@@ -51,9 +51,21 @@ struct StepperView: View {
 }
 
 #Preview {
-    HStack(spacing: 16) {
-        ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: 0)
-        StepperView(value: .constant(0))
+    VStack {
+        HStack(spacing: 16) {
+            ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: 0)
+            StepperView(value: .constant(0))
+        }
+        
+        HStack(spacing: 16) {
+            ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: 22)
+            StepperView(value: .constant(0))
+        }
+        
+        HStack(spacing: 16) {
+            ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: 32)
+            StepperView(value: .constant(0))
+        }
     }
     .padding(16)
 }

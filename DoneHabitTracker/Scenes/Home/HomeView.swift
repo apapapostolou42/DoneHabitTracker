@@ -12,9 +12,9 @@ struct HomeView: View {
     
     @StateObject var viewModel: HomeViewModel
     
-    @State var currentGlasses: Int = 0
-    @State var selectedPill: PillTag? = nil
-    @State private var selectedTabIndex = 1
+    @State var currentStep1: Int = 0
+    @State var currentStep2: Int = 15
+    @State var currentStep3: Int = 0
     
     init(appModel: ApplicationModel) {
         self._viewModel = StateObject(wrappedValue: HomeViewModel(appModel: appModel))
@@ -25,69 +25,68 @@ struct HomeView: View {
         AppTabItem(title: "Week", count: 1),
         AppTabItem(title: "Month", count: 0)
     ]
+    @State private var selectedTabIndex = 1
+    
+    @State private var isChecked: Bool = false
     
     var body: some View {
-        
         ScrollView(showsIndicators: false) {
-            
-            VStack(spacing: 16) {
+            VStack(alignment: .leading, spacing: 16) {
+                
+                HStack(spacing: 32) {
+                    ProfileImage()
+                    Text("Hello <Username>")
+                    Spacer()
+                }
                 
                 AppTabView(tabItems: tabItems, selectedTabIndex: $selectedTabIndex)
                 
-                HStack {
-                    // First way to use doughnut throuth Swift Charts
-                    ChartsDougnutProgress(percentage: 32)
-                    
+                
+                HStack(spacing: 0) {
+                    Text("This week you completed")
                     Spacer()
+                    ChartsDougnutProgress(percentage: 35)
+                        .frame(width: 100)
+                        .scaleEffect(0.8)
+                }
+                
+                Group {
+                    AppHeader("Pending Habits")
                     
-                    // Second way to use doughnut through custom Control
-                    CircularProgressBar(percentage: 79)
-                        .frame(width: 120, height: 120)
+                    VStack(alignment: .leading, spacing: 16) {
+                        // foreach
+                        
+                        EditableHabit(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: .constant(0))
+                        
+                        EditableHabit(text: "Λεπτά Περπάτημα", totalSteps: 12, currentStep: .constant(5))
+                        
+                        EditableHabit(text: "Μαγείρεμα", totalSteps: 1, currentStep: .constant(0))
+                        
+                        EditableHabit(text: "Μικρά Γεύματα", totalSteps: 5, currentStep: .constant(3))
+                        
+                        EditableHabit(text: "Μικρά Γεύματα", totalSteps: 5, currentStep: .constant(7))
+                        
+                        EditableHabit(text: "Γυμναστήριο", totalSteps: 1, currentStep: .constant(1))
+                    }
                 }
                 
-                Spacer()
-                
-                PillTagsView(
-                    pillTags: [
-                        PillTag(text: "All"),
-                        PillTag(text: "Fitness"),
-                        PillTag(text: "Daily"),
-                        PillTag(text: "Custom"),
-                        PillTag(text: "Item 1"),
-                        PillTag(text: "Item 2")
-                    ],
-                    selectedTag: $selectedPill
-                )
-                
-                ChartsPie(data: [
-                    ChartsPie.ShapeModel(type: "Circle",    count: 12),
-                    ChartsPie.ShapeModel(type: "Square",    count: 10),
-                    ChartsPie.ShapeModel(type: "Triangle",  count: 21),
-                    ChartsPie.ShapeModel(type: "Rectangle", count: 15),
-                    ChartsPie.ShapeModel(type: "Hexagon",   count: 8)
-                ])
-                .frame(width: 250, height: 250)
-                
-                ChartsBar(dayData: viewModel.dayData, weekData:  viewModel.weekData)
-                
-                Spacer()
-                
-                HStack(spacing: 8) {
-                    ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: currentGlasses)
-                    StepperView(value: $currentGlasses)
+                VStack(alignment: .leading, spacing: 16) {
+                    AppHeader("Completed")
+                    
+                    
+                    VStack(spacing: 8) {
+                        // foreach
+                        ProgressBar(text: "Ποτήρια Νερό", totalSteps: 1, currentStep: 1)
+                        
+                        ProgressBar(text: "Ποτήρια Νερό", totalSteps: 1, currentStep: 2)
+                        
+                        ProgressBar(text: "Ποτήρια Νερό", totalSteps: 1, currentStep: 1)
+                    }
                 }
-                
-                ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: 10)
-                
-                ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: 32)
-                
-                ProgressBar(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: 40)
-                
-                
-                Spacer()
+               
             }
+            .padding(.horizontal, 16)
         }
-        .padding(16)
     }
 }
 
