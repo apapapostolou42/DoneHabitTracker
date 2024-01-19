@@ -14,12 +14,18 @@ struct SplashView: View {
 
     var body: some View {
         VStack {
+            
+            Spacer()
+            
             Image("logo")
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal, 32)
+            
+            Spacer()
         }
+        .background(Color(UIColor.systemGroupedBackground))
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 withAnimation {
