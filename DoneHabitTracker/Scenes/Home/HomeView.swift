@@ -15,6 +15,9 @@ struct HomeView: View {
     @State var currentStep1: Int = 0
     @State var currentStep2: Int = 15
     @State var currentStep3: Int = 0
+    @State var currentStep4: Int = 3
+    @State var currentStep5: Int = 4
+    @State var currentStep6: Int = 0
     
     init(appModel: ApplicationModel) {
         self._viewModel = StateObject(wrappedValue: HomeViewModel(appModel: appModel))
@@ -56,17 +59,17 @@ struct HomeView: View {
                     VStack(alignment: .leading, spacing: 16) {
                         // foreach
                         
-                        EditableHabit(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: .constant(0))
+                        EditableHabit(text: "Ποτήρια Νερό", totalSteps: 32, currentStep: $currentStep1)
                         
-                        EditableHabit(text: "Λεπτά Περπάτημα", totalSteps: 12, currentStep: .constant(5))
+                        EditableHabit(text: "Λεπτά Περπάτημα", totalSteps: 20, currentStep: $currentStep2)
                         
-                        EditableHabit(text: "Μαγείρεμα", totalSteps: 1, currentStep: .constant(0))
+                        EditableHabit(text: "Μαγείρεμα", totalSteps: 1, currentStep: $currentStep3)
                         
-                        EditableHabit(text: "Μικρά Γεύματα", totalSteps: 5, currentStep: .constant(3))
+                        EditableHabit(text: "Μικρά Γεύματα", totalSteps: 5, currentStep: $currentStep4)
                         
-                        EditableHabit(text: "Μικρά Γεύματα", totalSteps: 5, currentStep: .constant(7))
+                        EditableHabit(text: "Μικρά Γεύματα", totalSteps: 5, currentStep: $currentStep5)
                         
-                        EditableHabit(text: "Γυμναστήριο", totalSteps: 1, currentStep: .constant(1))
+                        EditableHabit(text: "Γυμναστήριο", totalSteps: 1, currentStep: $currentStep6)
                     }
                 }
                 
