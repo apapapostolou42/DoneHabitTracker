@@ -15,47 +15,39 @@ struct ProfileView: View {
         self._viewModel = StateObject(wrappedValue: ProfileViewModel(appModel: appModel))
     }
     
-    struct ProfileHeader: View {
-        struct ProfilePicPlaceholder: View {
-            var body: some View {
-                ZStack {
-                    Circle()
-                        .stroke(lineWidth: 3.0)
-                        .background(Color.clear)
-                        .foregroundColor(.primary)
-                        .frame(width: 48, height: 48)
-                    
-                    
-                    Image("ti_profile")
-                        .resizable()
-                        .renderingMode(.template)
-                        .foregroundColor(.primary)
-                        .frame(width: 35, height: 35)
-                }
-                .tint(.primary)
-            }
-        }
-        
-        var body: some View {
-            HStack(alignment: .center, spacing: 32) {
-                Text("profile_profile")
-                    .font(.system(size: 48).bold())
-                    .underline()
-                
-                ProfilePicPlaceholder()
-                
-                Spacer()
-            }
-        }
-    }
-    
-    struct ProfileFields: View {
+    struct ProfileSection: View {
         
         @EnvironmentObject private var appModel: ApplicationModel
         @ObservedObject var viewModel: ProfileViewModel
         
         var body: some View {
             VStack(alignment: .leading ,spacing: 16) {
+                HStack(alignment: .center, spacing: 32) {
+                    // Profile Title
+                    Text("profile_profile")
+                        .font(.system(size: 44).bold())
+                        .underline()
+                    
+                    // Profile Image
+                    ZStack {
+                        Circle()
+                            .stroke(lineWidth: 3.0)
+                            .background(Color.clear)
+                            .foregroundColor(.primary)
+                            .frame(width: 44, height: 44)
+                        
+                        
+                        Image("ti_profile")
+                            .resizable()
+                            .renderingMode(.template)
+                            .foregroundColor(.primary)
+                            .frame(width: 32, height: 32)
+                    }
+                    .tint(.primary)
+                    
+                    Spacer()
+                }
+                
                 HStack(spacing: 0) {
                     Text("profile_form_name")
                         .frame(width: 100, alignment: .leading)
@@ -83,62 +75,11 @@ struct ProfileView: View {
                         .cornerRadius(5)
                 }
                 .disabled(!viewModel.canUpdateUserInfo)
-                .padding(.bottom, 32)
-                
-                HStack(spacing: 0) {
-                    Button(action: {
-                        viewModel.showChangeEmailConfirmationAlert = true
-                    }) {
-                        Text("profile_request_password")
-                            .padding(8)
-                            .foregroundColor(.white)
-                            .background(Color.btnEnabled)
-                            .cornerRadius(5)
-                    }
-                    .disabled(false)
-                    .alert(isPresented: $viewModel.showChangeEmailConfirmationAlert) {
-                        Alert(
-                            title: Text("profile_alert_changepassword_title"),
-                            message: Text("profile_alert_changepassword_message"),
-                            primaryButton: .default(Text("profile_alert_changepassword_yes")) {
-                                viewModel.requestPasswordReset()
-                            },
-                            secondaryButton: .default(Text("profile_alert_changepassword_no")) {
-                                
-                            }
-                        )
-                    }
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        viewModel.showLogoutConfirmationAlert = true
-                    }) {
-                        Text("profile_btn_logout")
-                            .padding(8)
-                            .foregroundColor(.white)
-                            .background(Color.btnEnabled)
-                            .cornerRadius(5)
-                    }
-                    .disabled(false)
-                    .alert(isPresented: $viewModel.showLogoutConfirmationAlert) {
-                        Alert(
-                            title: Text("profile_alert_logout_title"),
-                            message: Text("profile_alert_logout_message"),
-                            primaryButton: .default(Text("profile_alert_logout_yes")) {
-                                viewModel.logout()
-                            },
-                            secondaryButton: .default(Text("profile_alert_logout_no")) {
-                                
-                            }
-                        )
-                    }
-                }
             }
         }
     }
     
-    struct ProfileSettings: View {
+    struct SettingsSection: View {
         
         @EnvironmentObject private var appModel: ApplicationModel
         @ObservedObject var viewModel: ProfileViewModel
@@ -146,7 +87,7 @@ struct ProfileView: View {
         var body: some View {
             VStack(alignment: .leading) {
                 Text("profile_settings")
-                    .font(.system(size: 48).bold())
+                    .font(.system(size: 44).bold())
                     .underline()
                 
                 HStack(spacing: 0) {
@@ -163,43 +104,112 @@ struct ProfileView: View {
                     AppDropDown(selectedItem: $appModel.selectedLanguage, options: appModel.languages.map{$0.rawValue})
                 }
                 .padding(.bottom, 32)
-                
+            }
+        }
+    }
+    
+    struct ChangeEmailAndLogoutSection: View {
+        
+        @ObservedObject var viewModel: ProfileViewModel
+        
+        var body: some View {
+            HStack(spacing: 0) {
                 Button(action: {
-                    viewModel.showProfileDeletionConfirmationAlert = true
+                    viewModel.showChangeEmailConfirmationAlert = true
                 }) {
-                    Text("profile_btn_delete")
+                    Text("profile_request_password")
                         .padding(8)
                         .foregroundColor(.white)
-                        .background(.red)
+                        .background(Color.btnEnabled)
                         .cornerRadius(5)
                 }
-                .alert(isPresented: $viewModel.showProfileDeletionConfirmationAlert) {
+                .disabled(false)
+                .alert(isPresented: $viewModel.showChangeEmailConfirmationAlert) {
                     Alert(
-                        title: Text("profile_alert_delete_title"),
-                        message: Text("profile_alert_delete_message"),
-                        primaryButton: .default(Text("profile_alert_delete_yes")) {
-                            Task {
-                                await viewModel.wipeUserAccount()
-                            }
+                        title: Text("profile_alert_changepassword_title"),
+                        message: Text("profile_alert_changepassword_message"),
+                        primaryButton: .default(Text("profile_alert_changepassword_yes")) {
+                            viewModel.requestPasswordReset()
                         },
-                        secondaryButton: .default(Text("profile_alert_delete_no")) {}
+                        secondaryButton: .default(Text("profile_alert_changepassword_no")) {
+                            
+                        }
+                    )
+                }
+                
+                Spacer()
+                
+                Button(action: {
+                    viewModel.showLogoutConfirmationAlert = true
+                }) {
+                    Text("profile_btn_logout")
+                        .padding(8)
+                        .foregroundColor(.white)
+                        .background(Color.btnEnabled)
+                        .cornerRadius(5)
+                }
+                .disabled(false)
+                .alert(isPresented: $viewModel.showLogoutConfirmationAlert) {
+                    Alert(
+                        title: Text("profile_alert_logout_title"),
+                        message: Text("profile_alert_logout_message"),
+                        primaryButton: .default(Text("profile_alert_logout_yes")) {
+                            viewModel.logout()
+                        },
+                        secondaryButton: .default(Text("profile_alert_logout_no")) {
+                            
+                        }
                     )
                 }
             }
         }
     }
     
-    var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack(alignment: .leading, spacing: 32) {
-                ProfileHeader()
-                
-                ProfileFields(viewModel: viewModel)
-                
-                ProfileSettings(viewModel: viewModel)
+    struct AccountRemovelSection: View {
+        
+        @ObservedObject var viewModel: ProfileViewModel
+        
+        var body: some View {
+            
+            Button(action: {
+                viewModel.showProfileDeletionConfirmationAlert = true
+            }) {
+                Text("profile_btn_delete")
+                    .padding(8)
+                    .foregroundColor(.white)
+                    .background(.red)
+                    .cornerRadius(5)
+            }
+            .alert(isPresented: $viewModel.showProfileDeletionConfirmationAlert) {
+                Alert(
+                    title: Text("profile_alert_delete_title"),
+                    message: Text("profile_alert_delete_message"),
+                    primaryButton: .default(Text("profile_alert_delete_yes")) {
+                        Task {
+                            await viewModel.wipeUserAccount()
+                        }
+                    },
+                    secondaryButton: .default(Text("profile_alert_delete_no")) {}
+                )
             }
         }
-        .padding(16)
+    }
+
+    var body: some View {
+        ScrollView(showsIndicators: false) {
+            VStack(alignment: .leading, spacing: 48) {
+                
+                ProfileSection(viewModel: viewModel)
+                
+                ChangeEmailAndLogoutSection(viewModel: viewModel)
+                
+                SettingsSection(viewModel: viewModel)
+                
+                AccountRemovelSection(viewModel: viewModel)
+                
+            }
+        }
+        .padding(.horizontal, 16)
         .onAppear {
             viewModel.refreshUserData()
         }
