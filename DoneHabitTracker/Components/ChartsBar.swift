@@ -46,7 +46,7 @@ struct ChartsBar: View {
         }
         .chartXAxis(.hidden)
         .chartLegend(.hidden)
-        .frame(height: 60 * CGFloat(habitStatData.count))
+        .frame(height: 80 * CGFloat(dayData.count))
 
         .chartForegroundStyleScale([
             "Daily": Color(hex: "5087EC"),

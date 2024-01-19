@@ -33,27 +33,30 @@ struct HomeView: View {
     @State private var isChecked: Bool = false
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack(alignment: .leading, spacing: 16) {
+        
+        VStack(alignment: .leading, spacing: 0) {
+            
+            HStack(spacing: 32) {
+                ProfileImage()
+                Text("Hello <Username>")
+                Spacer()
+            }
+            .padding(16)
+            
+            AppTabView(tabItems: tabItems, selectedTabIndex: $selectedTabIndex)
+            
+            HStack(spacing: 0) {
+                Text("This week you completed")
+                Spacer()
+                ChartsDougnutProgress(percentage: 35)
+                    .frame(width: 100, height: 100)
+                    .scaleEffect(0.8)
+            }
+            .padding(.horizontal, 16)
+            
+            ScrollView(showsIndicators: false) {
                 
-                HStack(spacing: 32) {
-                    ProfileImage()
-                    Text("Hello <Username>")
-                    Spacer()
-                }
-                
-                AppTabView(tabItems: tabItems, selectedTabIndex: $selectedTabIndex)
-                
-                
-                HStack(spacing: 0) {
-                    Text("This week you completed")
-                    Spacer()
-                    ChartsDougnutProgress(percentage: 35)
-                        .frame(width: 100)
-                        .scaleEffect(0.8)
-                }
-                
-                Group {
+                VStack (alignment: .leading, spacing: 16) {
                     AppHeader("Pending Habits")
                     
                     VStack(alignment: .leading, spacing: 16) {
@@ -86,7 +89,7 @@ struct HomeView: View {
                         ProgressBar(text: "Ποτήρια Νερό", totalSteps: 1, currentStep: 1)
                     }
                 }
-               
+                
             }
             .padding(.horizontal, 16)
         }

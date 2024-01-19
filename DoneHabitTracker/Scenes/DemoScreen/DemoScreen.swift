@@ -70,7 +70,7 @@ struct DemoScreen: View {
                 ])
                 .frame(width: 250, height: 250)
                 
-                //ChartsBar(dayData: viewModel.dayData, weekData:  viewModel.weekData)
+                ChartsBar(dayData: viewModel.dayData, weekData:  viewModel.weekData)
                 
                 Spacer()
                 
