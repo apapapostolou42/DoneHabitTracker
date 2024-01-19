@@ -14,16 +14,25 @@ struct HomeView: View {
     
     @State var currentGlasses: Int = 0
     @State var selectedPill: PillTag? = nil
-    
+    @State private var selectedTabIndex = 1
     
     init(appModel: ApplicationModel) {
         self._viewModel = StateObject(wrappedValue: HomeViewModel(appModel: appModel))
     }
     
+    private let tabItems = [
+        AppTabItem(title: "Today", count: 3),
+        AppTabItem(title: "This week", count: 3),
+        AppTabItem(title: "This Month", count: 3)
+    ]
+    
     var body: some View {
+        
         ScrollView(showsIndicators: false) {
             
             VStack(spacing: 16) {
+                
+                AppTabView(tabItems: tabItems, selectedTabIndex: $selectedTabIndex)
                 
                 HStack {
                     // First way to use doughnut throuth Swift Charts
@@ -78,7 +87,7 @@ struct HomeView: View {
                 Spacer()
             }
         }
-        .padding(32)
+        .padding(16)
     }
 }
 

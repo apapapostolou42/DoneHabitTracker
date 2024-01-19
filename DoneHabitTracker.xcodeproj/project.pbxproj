@@ -71,6 +71,7 @@
 		D386479B2B56F8310016619C /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386479A2B56F8310016619C /* StatisticsView.swift */; };
 		D386479D2B56F83F0016619C /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386479C2B56F83F0016619C /* StatisticsViewModel.swift */; };
 		D3D22A272B57D5E5009BE6E9 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D22A262B57D5E5009BE6E9 /* View+Extensions.swift */; };
+		D3D22A2B2B5A8825009BE6E9 /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D22A2A2B5A8825009BE6E9 /* AppTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +113,7 @@
 		D386479A2B56F8310016619C /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		D386479C2B56F83F0016619C /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
 		D3D22A262B57D5E5009BE6E9 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		D3D22A2A2B5A8825009BE6E9 /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +294,7 @@
 				D386477F2B568BFF0016619C /* ChartsDougnutProgress.swift */,
 				D38647852B56C4AE0016619C /* AppTextField.swift */,
 				D38647872B56D45F0016619C /* AppDropDown.swift */,
+				D3D22A2A2B5A8825009BE6E9 /* AppTabView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				D386479B2B56F8310016619C /* StatisticsView.swift in Sources */,
 				D38647642B50B3FF0016619C /* ProfileView.swift in Sources */,
 				D386477E2B567BB80016619C /* PillTagView.swift in Sources */,
+				D3D22A2B2B5A8825009BE6E9 /* AppTabView.swift in Sources */,
 				D386477C2B5671C40016619C /* ChartsPie.swift in Sources */,
 				D386479D2B56F83F0016619C /* StatisticsViewModel.swift in Sources */,
 				D38647782B5541010016619C /* StepperView.swift in Sources */,

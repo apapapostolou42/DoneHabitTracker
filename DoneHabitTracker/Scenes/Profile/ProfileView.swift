@@ -199,6 +199,13 @@ struct ProfileView: View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 48) {
                 
+                TabView {
+                    Text("A")
+                    
+                    
+                    Text("B")
+                }
+                
                 ProfileSection(viewModel: viewModel)
                 
                 ChangeEmailAndLogoutSection(viewModel: viewModel)
