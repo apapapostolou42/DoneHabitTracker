@@ -13,6 +13,14 @@ class StatisticsViewModel : ObservableObject {
     
     @Published var showDeletionConfirmationAlert: Bool = false
     
+    let pills = [
+        PillTag(text: "All"),
+        PillTag(text: "Fitness"),
+        PillTag(text: "Daily"),
+        PillTag(text: "Custom")
+    ];
+    @Published var selectdTag: PillTag?
+    
     @Published var dayData: [ChartsBar.Item] = [
         .init(habitName: "Ποτήρια Νερό", value: 100),
         .init(habitName: "Λεπτά Περπάτημα", value: 75),
@@ -33,5 +41,6 @@ class StatisticsViewModel : ObservableObject {
     
     init(appModel: ApplicationModel) {
         self.appModel = appModel
+        selectdTag = pills[0]
     }
 }

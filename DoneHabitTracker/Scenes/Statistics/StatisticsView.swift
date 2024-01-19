@@ -10,13 +10,6 @@ import SwiftUI
 struct StatisticsView: View {
     @StateObject var viewModel: StatisticsViewModel
     
-    let pills = [
-        PillTag(text: "All"),
-        PillTag(text: "Fitness"),
-        PillTag(text: "Daily"),
-        PillTag(text: "Custom")
-    ];
-    
     init(appModel: ApplicationModel) {
         self._viewModel = StateObject(wrappedValue: StatisticsViewModel(appModel: appModel))
     }
@@ -30,9 +23,8 @@ struct StatisticsView: View {
             }
             
             PillTagsView(
-                pillTags: pills,
-                selectedTag: .constant(pills[0]))
-            
+                pillTags: viewModel.pills,
+                selectedTag: $viewModel.selectdTag)
             
             
             ScrollView(showsIndicators: false) {
@@ -47,7 +39,7 @@ struct StatisticsView: View {
                 .padding(.bottom, 32)
                 
                 Rectangle()
-                    .frame(width: .infinity, height: 1)
+                    .frame(height: 1)
                     .foregroundColor(Color.gray.opacity(0.7))
                     .padding(.bottom, 32)
                 
