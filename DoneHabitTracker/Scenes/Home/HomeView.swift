@@ -22,8 +22,8 @@ struct HomeView: View {
     
     private let tabItems = [
         AppTabItem(title: "Today", count: 3),
-        AppTabItem(title: "This week", count: 3),
-        AppTabItem(title: "This Month", count: 3)
+        AppTabItem(title: "Week", count: 1),
+        AppTabItem(title: "Month", count: 0)
     ]
     
     var body: some View {

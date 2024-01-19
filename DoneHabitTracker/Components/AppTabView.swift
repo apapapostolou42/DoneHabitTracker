@@ -26,6 +26,9 @@ struct AppTabView: View {
                         Text(tabItems[index].title)
                             .font(.caption.bold())
                             .foregroundColor(selectedTabIndex == index ? .white : .primary)
+                        
+                        Spacer()
+                        
                         ZStack {
                             Circle()
                                 .foregroundColor(.yellow)
@@ -36,10 +39,16 @@ struct AppTabView: View {
                                 .foregroundColor(.black)
                         }
                         .padding(8)
+                        .opacity(tabItems[index].count == 0 ? 0.0 : 1.0)
                     }
+                    .padding(.horizontal, 8)
                     
                     .frame(maxWidth: .infinity) // Ensure each tab item takes up equal space
                     .background(selectedTabIndex == index ? Color.red : Color.gray.opacity(0.5))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 0.0)
+                            .stroke(Color.gray.opacity(0.4), lineWidth: 1.0)
+                    }
                 }
             }
         }
@@ -48,12 +57,12 @@ struct AppTabView: View {
 
 #Preview {
    
-    @State var selection: Int = 1
+    @State var selection: Int = 0
     
     let tabItems = [
         AppTabItem(title: "Today", count: 3),
-        AppTabItem(title: "Week", count: 3),
-        AppTabItem(title: "Month", count: 3)
+        AppTabItem(title: "Week", count: 1),
+        AppTabItem(title: "Month", count: 0)
     ]
     
     return AppTabView(tabItems: tabItems, selectedTabIndex: $selection)
